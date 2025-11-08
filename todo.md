@@ -31,3 +31,9 @@
 - [ ] Test website responsiveness
 - [ ] Deploy to GitHub Pages
 - [ ] Verify live website URL
+
+
+## Bug Fixes
+- [x] Remove locale parameter from URLs
+- [x] Configure proper base path for GitHub Pages
+- [x] Test clean URLs without query parameters
