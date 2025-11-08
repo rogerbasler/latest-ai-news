@@ -37,3 +37,7 @@
 - [x] Remove locale parameter from URLs
 - [x] Configure proper base path for GitHub Pages
 - [x] Test clean URLs without query parameters
+
+- [ ] Enable GitHub Pages in repository settings
+- [ ] Verify GitHub Pages deployment is active
+- [ ] Fix 404 error on live website
