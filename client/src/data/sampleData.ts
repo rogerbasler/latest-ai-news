@@ -4,11 +4,11 @@ export const sampleData: WeeklyUpdate = {
   weekEnding: "2025-11-30",
   podcast: {
     id: "ep-004",
-    title: "AI News Weekly: Gemini 3, Claude 4.5, and the AI Regulation Showdown - November 30, 2025",
-    description: "This week covers Google's Gemini 3 dominating benchmarks, Anthropic's Claude Opus 4.5 release, OpenAI's ChatGPT shopping research feature, 49 US AI startups raising $100M+, Trump's AI executive order, the federal vs state regulation showdown, OpenAI's teen suicide lawsuit defense, and MIT's study showing AI can replace 11.7% of the US workforce. Hosted by Roger Basler de Roca.",
+    title: "AI News Avatar: Weekly AI Briefing - November 30, 2025",
+    description: "This week covers Google's Gemini 3 dominating benchmarks, Anthropic's Claude Opus 4.5 release, OpenAI's ChatGPT shopping research feature, 49 US AI startups raising $100M+, Trump's AI executive order, the federal vs state regulation showdown, OpenAI's wrongful death lawsuit defense, and major investments in AI. Hosted by AI News Avatar.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2025-11-30",
-    duration: "10:28",
+    duration: "4:59",
   },
   articles: [
     {
