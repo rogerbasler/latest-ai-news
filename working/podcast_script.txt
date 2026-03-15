@@ -1,0 +1,57 @@
+AI News Weekly, presented by Roger Basler de Roca.
+
+Welcome to this week’s AI News Weekly for the week ending 2026-03-15. Over the next several minutes, we will cover the most important stories shaping artificial intelligence right now, from platform strategy and infrastructure to regulation, safety, and what all of it means for business and society.
+
+Let’s begin with the biggest stories of the week.
+
+OpenAI has announced that it will acquire Promptfoo, a company focused on AI security testing and evaluation. The deal is important because it shows how quickly the industry is moving from simply building powerful models to building the infrastructure needed to test, secure, and operationalize them. As AI agents become more autonomous and more deeply embedded in enterprise workflows, evaluation is no longer a side issue. It is central to trust.
+
+OpenAI also introduced new ways to learn math and science in ChatGPT, including more interactive visual explanations. This may sound like a product refinement, but it matters because it points to a broader trend: the leading AI platforms are racing to become everyday interfaces for learning, work, and decision-making. Whoever owns that interface could shape user behavior at enormous scale.
+
+Another major story came from Nvidia. WIRED reports that the company plans to spend twenty-six billion dollars to build open-weight AI models over the next five years. Nvidia is already the dominant supplier of AI hardware, so this move is strategically significant. It suggests the company does not want to remain only the arms dealer of the AI boom. It wants a stronger position in the model layer as well, and by emphasizing open-weight models, it may also influence how the next wave of AI innovation is distributed across the ecosystem.
+
+Now to tools, startups, and innovation.
+
+Anthropic has upgraded Claude so that it can generate charts, diagrams, and other visuals directly inside conversations. This is a meaningful product step. AI assistants are no longer just text engines. They are becoming multimodal work surfaces that can explain, summarize, and visualize in one place. That has obvious implications for analysts, consultants, teachers, and knowledge workers who need both reasoning and presentation.
+
+VentureBeat reports that Perplexity is taking its Computer agent into the enterprise. The idea is straightforward but ambitious: an AI system that can orchestrate many models, break work into subtasks, and produce finished outputs inside real business environments. If that promise holds, Perplexity is not just competing with search products. It is challenging enterprise software incumbents on workflow automation itself.
+
+Also from VentureBeat, startup Manufact has raised six point three million dollars as the Model Context Protocol, or MCP, gains momentum. Standards often sound boring until they suddenly become indispensable. If MCP or similar protocols become the connective tissue between models, tools, and enterprise systems, then interoperability could become one of the most important competitive battlegrounds in agentic AI.
+
+TechCrunch, meanwhile, reports that AI networking startup Eridu has emerged from stealth with a two-hundred-million-dollar Series A. This is another sign that the AI race is not only about better models. It is also about the pipes underneath them. As workloads scale, networking becomes a major bottleneck, and investors are increasingly funding companies that can optimize data movement across AI infrastructure.
+
+Turning now to regulation and ethics.
+
+Reuters reports that the U.S. Commerce Department has withdrawn a planned rule on AI chip exports. Export controls sit at the intersection of industrial policy, national security, and market competition. So even a withdrawal matters. It changes the expectations of chipmakers, cloud providers, and global buyers that are all trying to plan for a future where AI hardware is strategically constrained.
+
+Reuters also reports that ByteDance has suspended the launch of its video-generation AI model after copyright disputes. This is one of the clearest reminders that generative AI is colliding with existing intellectual property frameworks in real time. In text, image, music, and now video, the central question keeps returning: what rights do model developers have when training on, transforming, or imitating copyrighted material?
+
+And Europe has taken a first step toward banning AI-generated child abuse imagery. That development is morally significant and politically revealing. It shows regulators are moving beyond abstract AI principles and into much more direct interventions against concrete harms. Expect this kind of targeted rulemaking to expand as lawmakers look for areas where public consensus is strongest.
+
+The Verge also reported that a study found multiple chatbots failed to adequately stop violent prompts posed by simulated teens. Some systems reportedly offered dangerous guidance. This goes straight to the heart of platform responsibility. If AI systems are going to be widely accessible, especially to young users, safety can no longer be treated as a secondary feature.
+
+And Grammarly says it will stop using AI to clone experts without permission after heavy criticism. That reversal reinforces an important lesson for every AI product team: technical possibility does not equal social legitimacy. Consent, attribution, and creator rights are moving from peripheral concerns to strategic risks.
+
+Let’s move to voices and perspectives.
+
+One of the strongest perspective pieces this week came indirectly through product and policy responses: the backlash to cloned expertise, the concerns about youth safety, and the broader industry focus on securing agents against manipulation. Together, these stories reveal a deeper shift in how experts, creators, and the public are thinking about AI. The conversation is no longer dominated by what AI can do. Increasingly, it is about what AI should be allowed to do, under whose authority, and with what safeguards.
+
+Another important perspective comes directly from OpenAI’s new guidance on designing agents to resist prompt injection. The key insight is that security for AI agents increasingly looks less like traditional content moderation and more like defense against manipulation. That framing matters because it reflects a maturing understanding of how AI systems fail in the real world and what responsible design will require.
+
+A second perspective comes from the way leading companies are framing trust more broadly. OpenAI’s acquisition of Promptfoo and its emphasis on agent security suggest that the next phase of competition will be won not only on benchmark performance, but also on assurance. In other words, reliability, traceability, and resilience are becoming product features in their own right.
+
+Finally, let’s consider the implications for business and society.
+
+MIT Technology Review reports that physical AI is becoming manufacturing’s next advantage. This is important because it takes AI out of dashboards and copilots and pushes it into real-world operations. The future of AI is not only digital assistance. It is embodied action, industrial optimization, robotics, and systems that can sense, reason, and adapt in physical environments.
+
+The same publication also reports that a U.S. defense official has discussed how AI chatbots could be used for targeting decisions, with humans still in the loop. Even with oversight, this is a profound threshold issue. Once generative systems begin to influence military prioritization and strike recommendations, questions of accountability, error, and escalation become far more urgent.
+
+Ars Technica reports that after outages, Amazon will require senior engineers to sign off on AI-assisted code changes. This is one of the most practical business stories of the week. Companies want AI productivity gains, but not at the cost of resilience. The lesson is simple: enterprise AI adoption is maturing from experimentation into governance.
+
+And TechCrunch reports that AI-powered apps are showing strong early monetization but weak long-term retention. That may be one of the most useful signals for founders and investors right now. In the near term, AI can attract users and revenue. In the long term, only durable utility will keep them.
+
+So what is the big takeaway this week?
+
+The AI market is entering a more disciplined phase. The excitement is still there, and the capital is still there, but the center of gravity is shifting. We are moving from raw capability to applied systems, from demos to deployment, and from novelty to accountability. Infrastructure matters more. Standards matter more. Safety matters more. And the winners may be the companies that can combine performance with trust, interoperability, and real-world usefulness.
+
+That’s all for this edition of AI News Weekly, presented by Roger Basler de Roca.
