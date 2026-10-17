@@ -67,7 +67,7 @@ Create a professional English podcast script (10-15 minutes) with host Roger Bas
 
 Update the website data file at /home/ubuntu/latest-ai-news/client/src/data/sampleData.ts with the new articles and podcast information. Update the date stamp to the current date.
 
-Build the website, commit all changes, and push to the GitHub repository rogerbasler/latest-ai-news with the message "Weekly AI News Update - [current date]".
+Build the website, commit all changes, and push to the GitHub repository rogerbasler/latest-ai-news with the message "Weekly AI News Update - [current date]". Use the git identity `rogerbasler <22345508+rogerbasler@users.noreply.github.com>`. Never commit API keys, signed or temporary download URLs, or `.env` files.
 ```
 
 ## Schedule

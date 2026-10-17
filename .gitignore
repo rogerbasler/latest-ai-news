@@ -104,3 +104,6 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# Temporary / signed URLs from research runs
+**/report_urls.txt

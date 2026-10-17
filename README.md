@@ -49,8 +49,12 @@ Updates are scheduled every Sunday at 6:00 AM.
 
 ## Host
 
-**Roger Basler de Roca** - AI enthusiast and technology analyst bringing you the week's most important AI developments.
+**Roger Basler de Roca** is a Swiss AI consultant, keynote speaker and author based in Zürich. He works with companies on AI implementation, lectures at several Swiss universities and is a PhD candidate researching cognitive offloading. More at [thinkroger.ai](https://thinkroger.ai).
 
 ## License
 
-© 2025 Latest AI News. All rights reserved.
+© 2025–2026 Latest AI News, Roger Basler de Roca. All rights reserved.
+
+## Security
+
+No API keys or credentials belong in this repository. If you find a security issue, please contact mail@rogerbasler.ch instead of opening a public issue.
