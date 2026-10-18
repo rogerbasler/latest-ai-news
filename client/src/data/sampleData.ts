@@ -8,8 +8,7 @@ export const sampleData: WeeklyUpdate = {
     description: "This week: Meta's double move into frontier and open models, Gemini 4 Argon goes wide, outside evaluators inside an AI lab, and why agents get more expensive as tokens get cheaper. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2026-10-18",
-    duration: "12:00",
-    audioPending: true,
+    duration: "12:10",
   },
   articles: [
     {

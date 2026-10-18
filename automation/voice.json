@@ -1,5 +1,9 @@
 {
-  "voice": "auto",
+  "voice": {
+    "name": "Akio - Clear & Professional",
+    "voice_id": "b14f72c374434467936ca613cf0b70e3",
+    "language": "English"
+  },
   "gender": "male",
   "language": "en",
   "speed": 1.0
