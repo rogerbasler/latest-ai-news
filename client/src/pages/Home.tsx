@@ -1,9 +1,18 @@
-import { Sparkles, Newspaper, Calendar } from "lucide-react";
+import { Sparkles, Newspaper, Calendar, Archive, ArrowLeft } from "lucide-react";
 import { APP_TITLE } from "@/const";
 import NewsCard from "@/components/NewsCard";
 import PodcastPlayer from "@/components/PodcastPlayer";
 import { sampleData } from "@/data/sampleData";
+import { archive } from "@/data/archive";
+import { formatDay } from "@/lib/date";
 import type { NewsCategory } from "@/types/news";
+
+const BASE = import.meta.env.BASE_URL;
+
+function requestedWeek(): string | null {
+  if (typeof window === "undefined") return null;
+  return new URLSearchParams(window.location.search).get("week");
+}
 
 export default function Home() {
   const categories: NewsCategory[] = [
@@ -14,8 +23,18 @@ export default function Home() {
     "Implications for Business & Society",
   ];
 
+  const week = requestedWeek();
+  const archived = archive.find((edition) => edition.weekEnding === week);
+  const edition = archived ?? sampleData;
+  const otherEditions = [
+    ...(archived ? [{ weekEnding: sampleData.weekEnding, articles: sampleData.articles, latest: true }] : []),
+    ...archive
+      .filter((e) => e.weekEnding !== edition.weekEnding)
+      .map((e) => ({ weekEnding: e.weekEnding, articles: e.articles, latest: false })),
+  ];
+
   const getArticlesByCategory = (category: NewsCategory) => {
-    return sampleData.articles.filter((article) => article.category === category);
+    return edition.articles.filter((article) => article.category === category);
   };
 
   return (
@@ -35,11 +54,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Calendar className="w-4 h-4" />
-              <span>Week ending {new Date(sampleData.weekEnding).toLocaleDateString("en-US", { 
-                month: "long", 
-                day: "numeric", 
-                year: "numeric" 
-              })}</span>
+              <span>Week ending {formatDay(edition.weekEnding)}</span>
             </div>
           </div>
         </div>
@@ -58,7 +73,7 @@ export default function Home() {
             <div className="flex items-center justify-center gap-6 pt-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Newspaper className="w-4 h-4 text-primary" />
-                <span>{sampleData.articles.length} Articles</span>
+                <span>{edition.articles.length} Articles</span>
               </div>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-primary" />
@@ -69,14 +84,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Podcast Section */}
-      <section className="py-12 bg-card/20">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <PodcastPlayer episode={sampleData.podcast} />
+      {archived ? (
+        <section className="py-8 bg-card/20">
+          <div className="container">
+            <div className="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border border-border/50 bg-card/50 p-4 text-sm">
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <Archive className="w-4 h-4 text-primary" />
+                Archived edition, week ending {formatDay(archived.weekEnding)}. The podcast is available for the latest edition.
+              </span>
+              <a href={BASE} className="inline-flex items-center gap-2 text-primary hover:underline">
+                <ArrowLeft className="w-4 h-4" />
+                Latest edition
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        // Podcast Section
+        <section className="py-12 bg-card/20">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <PodcastPlayer episode={sampleData.podcast} />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* News Categories */}
       <section className="py-16">
@@ -103,6 +135,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Previous Editions */}
+      {otherEditions.length > 0 && (
+        <section className="py-12 border-t border-border/50">
+          <div className="container">
+            <div className="max-w-4xl mx-auto space-y-4">
+              <h3 className="text-2xl font-bold flex items-center gap-3">
+                <Archive className="w-6 h-6 text-primary" />
+                {archived ? "Other editions" : "Previous editions"}
+              </h3>
+              <ul className="divide-y divide-border/50 rounded-lg border border-border/50 bg-card/30">
+                {otherEditions.map((e) => (
+                  <li key={e.weekEnding}>
+                    <a
+                      href={e.latest ? BASE : `${BASE}?week=${e.weekEnding}`}
+                      className="flex items-center justify-between gap-4 px-4 py-3 hover:bg-card/60 transition-colors"
+                    >
+                      <span className="font-medium">
+                        Week ending {formatDay(e.weekEnding)}
+                        {e.latest ? " (latest)" : ""}
+                      </span>
+                      <span className="text-sm text-muted-foreground">{e.articles.length} articles</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* About Section */}
       <section className="py-16 bg-gradient-to-t from-primary/5 to-transparent">
         <div className="container">
@@ -111,8 +173,8 @@ export default function Home() {
             <p className="text-muted-foreground">
               Hosted by <span className="text-foreground font-semibold">Roger Basler de Roca</span>, 
               this weekly podcast brings you the most important AI developments from around the world. 
-              We analyze news from leading sources including TechCrunch, OpenAI, Reuters, WIRED, The Verge, 
-              and MIT Technology Review to keep you informed about the rapidly evolving AI landscape.
+              We analyze news from leading sources including TechCrunch, VentureBeat, MIT Technology Review, 
+              The Register and the AI labs' own announcements to keep you informed about the rapidly evolving AI landscape.
             </p>
             <p className="text-sm text-muted-foreground">
               New episodes published every Sunday at 6:00 AM

@@ -22,6 +22,8 @@ export interface PodcastEpisode {
   audioUrl: string;
   publishedAt: string;
   duration: string;
+  // true until the GitHub Action has produced the MP3 for this episode
+  audioPending?: boolean;
 }
 
 export interface WeeklyUpdate {
@@ -29,3 +31,6 @@ export interface WeeklyUpdate {
   articles: NewsArticle[];
   podcast: PodcastEpisode;
 }
+
+// Past editions keep their articles; the podcast audio is only kept for the latest edition.
+export type ArchivedUpdate = Omit<WeeklyUpdate, "podcast">;

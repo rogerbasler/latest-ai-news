@@ -163,8 +163,8 @@ def main():
     mmss = f"{int(secs // 60)}:{int(secs % 60):02d}"
     data = DATA.read_text(encoding="utf-8")
     data, n = re.subn(r'duration:\s*"[^"]*"', f'duration: "{mmss}"', data, count=1)
-    if n:
-        DATA.write_text(data, encoding="utf-8")
+    data = re.sub(r"\n\s*audioPending:\s*true,", "", data)
+    DATA.write_text(data, encoding="utf-8")
     print(f"{len(parts)} chunks, duration {mmss}, voice {voice['name']}")
 
 

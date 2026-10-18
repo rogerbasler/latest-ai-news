@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Calendar } from "lucide-react";
 import type { NewsArticle } from "@/types/news";
+import { formatDay } from "@/lib/date";
 
 interface NewsCardProps {
   article: NewsArticle;
@@ -25,7 +26,7 @@ export default function NewsCard({ article }: NewsCardProps) {
           </Badge>
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <Calendar className="w-3 h-3" />
-            {new Date(article.publishedAt).toLocaleDateString()}
+            {formatDay(article.publishedAt, "short")}
           </div>
         </div>
         <CardTitle className="text-lg group-hover:text-primary transition-colors">

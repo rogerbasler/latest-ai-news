@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Play, Pause, Volume2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import type { PodcastEpisode } from "@/types/news";
+import { formatDay } from "@/lib/date";
 
 interface PodcastPlayerProps {
   episode: PodcastEpisode;
@@ -78,45 +79,49 @@ export default function PodcastPlayer({ episode }: PodcastPlayerProps) {
       <CardContent>
         <p className="text-sm text-muted-foreground mb-4">{episode.description}</p>
         
-        <audio ref={audioRef} src={episode.audioUrl} preload="metadata" />
-        
-        <div className="space-y-4">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={togglePlay}
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-primary hover:bg-primary/90 transition-colors"
-              aria-label={isPlaying ? "Pause" : "Play"}
-            >
-              {isPlaying ? (
-                <Pause className="w-6 h-6 text-primary-foreground" />
-              ) : (
-                <Play className="w-6 h-6 text-primary-foreground ml-0.5" />
-              )}
-            </button>
-            
-            <div className="flex-1">
-              <input
-                type="range"
-                min="0"
-                max={duration || 0}
-                value={currentTime}
-                onChange={handleSeek}
-                className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
-              />
-              <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>{formatTime(currentTime)}</span>
-                <span>{episode.duration}</span>
+        {episode.audioPending ? (
+          <p className="text-sm text-primary mb-4">
+            The audio for this episode is being produced and will appear here shortly.
+          </p>
+        ) : (
+          <>
+          <audio ref={audioRef} src={episode.audioUrl} preload="metadata" />
+          
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={togglePlay}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-primary hover:bg-primary/90 transition-colors"
+                aria-label={isPlaying ? "Pause" : "Play"}
+              >
+                {isPlaying ? (
+                  <Pause className="w-6 h-6 text-primary-foreground" />
+                ) : (
+                  <Play className="w-6 h-6 text-primary-foreground ml-0.5" />
+                )}
+              </button>
+              
+              <div className="flex-1">
+                <input
+                  type="range"
+                  min="0"
+                  max={duration || 0}
+                  value={currentTime}
+                  onChange={handleSeek}
+                  className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                  <span>{formatTime(currentTime)}</span>
+                  <span>{episode.duration}</span>
+                </div>
               </div>
             </div>
           </div>
-          
-          <div className="text-xs text-muted-foreground">
-            Published: {new Date(episode.publishedAt).toLocaleDateString("en-US", { 
-              year: "numeric", 
-              month: "long", 
-              day: "numeric" 
-            })}
-          </div>
+          </>
+        )}
+
+        <div className="text-xs text-muted-foreground mt-4">
+          Published: {formatDay(episode.publishedAt)}
         </div>
       </CardContent>
     </Card>

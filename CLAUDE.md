@@ -2,7 +2,7 @@
 
 Dieses Repo ist die Website https://rogerbasler.github.io/latest-ai-news/ (GitHub Pages, Branch `main`, Ordner `/docs`).
 Jeden Sonntagmorgen erscheint eine neue englische Ausgabe mit 15 Meldungen und einem Podcast. Host ist Roger Basler de Roca.
-Inhalt der Website: `client/src/data/sampleData.ts` (Typen in `client/src/types/news.ts`). `docs/` wird nur durch `automation/publish.sh` erzeugt, nie von Hand bearbeiten.
+Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `client/src/data/archive.ts` (frühere Ausgaben, erreichbar über `?week=YYYY-MM-DD`). Typen in `client/src/types/news.ts`. `docs/` wird nur durch `automation/publish.sh` erzeugt, nie von Hand bearbeiten.
 
 ## Ablauf eines Wochenlaufs
 
@@ -12,27 +12,35 @@ Inhalt der Website: `client/src/data/sampleData.ts` (Typen in `client/src/types/
    - Steht in `sampleData.ts` bereits `weekEnding: "$DATUM"`, ist die Woche erledigt: nichts tun, kurz melden, Ende.
    - Die Meldungen der Vorwoche ansehen, damit sich nichts wiederholt.
 
-2. **Recherche (die sieben Tage bis heute)** mit WebSearch und WebFetch in diesen Quellen:
-   TechCrunch, OpenAI Blog, Reuters, WIRED, The Verge, MIT Technology Review, VentureBeat, Ars Technica.
+2. **Recherche (die sieben Tage bis heute)** mit WebFetch auf diesen Übersichtsseiten:
+   - TechCrunch: https://techcrunch.com/category/artificial-intelligence/ (und `/page/2/`, `/page/3/`)
+   - VentureBeat: https://venturebeat.com/technology/ und https://venturebeat.com/orchestration/
+   - The Register: https://www.theregister.com/ai_ml/
+   - MIT Technology Review: https://www.technologyreview.com/feed/ und WebSearch nach `technologyreview.com/2026/MM`
+   - OpenAI Blog: https://openai.com/news/
+   - Anthropic: https://www.anthropic.com/news
+   Reuters, WIRED, The Verge, Ars Technica und The Guardian sind für WebFetch gesperrt. Nicht umgehen (kein curl, kein Cache, kein Mirror) und nicht ungeprüft aus Suchergebnissen übernehmen.
    Jede Meldung muss auf der Originalseite geöffnet und Titel, Datum und URL geprüft werden. Nur Artikel, deren Veröffentlichungsdatum im Zeitraum liegt.
 
 3. **Auswahl: 15 Meldungen, genau 3 pro Rubrik**, in dieser Reihenfolge:
    `AI News of the Week`, `AI Tools, Startups, and Innovations`, `Regulation and Ethics`, `Voices and Perspectives`, `Implications for Business & Society`.
-   Mindestens fünf verschiedene Quellen, höchstens drei Meldungen pro Quelle. Relevanz für Unternehmer:innen und Entscheider:innen vor Neuheitswert.
+   Mindestens fünf verschiedene Quellen, höchstens vier Meldungen pro Quelle. Relevanz für Unternehmer:innen und Entscheider:innen vor Neuheitswert.
 
-4. **`sampleData.ts` schreiben**
+4. **Archivieren, dann `sampleData.ts` schreiben**
+   - Zuerst die bisherige Ausgabe aus `sampleData.ts` als neuen ersten Eintrag in `archive.ts` übernehmen (`weekEnding` und `articles`, ohne `podcast`). Archivierte Ausgaben nie verändern.
    - `weekEnding` = `$DATUM`.
    - Pro Meldung: `id` (kurzer Slug mit Rubrik-Präfix `news-`, `tools-`, `ethics-`, `voices-`, `business-`), `title` (Originaltitel), `summary` (2 Sätze: was passiert ist, dann Einordnung oder Einschränkung), `source` (exakter Quellenname wie oben), `url` (kanonische Artikel-URL ohne Tracking-Parameter), `publishedAt` (YYYY-MM-DD), `category`.
-   - `podcast`: `id` um eins erhöhen (`ep-035`, `ep-036`, ...), `title` = `AI News Weekly - <Month D, YYYY>`, `description` ein Satz mit den Themen der Woche plus "Presented by Roger Basler de Roca.", `audioUrl` bleibt `/latest-ai-news/podcast/latest-episode.mp3`, `publishedAt` = `$DATUM`, `duration` als Schätzung `MM:SS` (die Action setzt die echte Dauer).
+   - `podcast`: `id` um eins erhöhen (`ep-035`, `ep-036`, ...), `title` = `AI News Weekly - <Month D, YYYY>`, `description` ein Satz mit den Themen der Woche plus "Presented by Roger Basler de Roca.", `audioUrl` bleibt `/latest-ai-news/podcast/latest-episode.mp3`, `publishedAt` = `$DATUM`, `duration` als Schätzung `MM:SS`, `audioPending: true` (die Seite zeigt dann statt des alten MP3 einen Hinweis; die Action setzt die echte Dauer und entfernt `audioPending`).
 
 5. **Podcast-Skript** nach `podcast/script.txt` (nur gesprochener Text, Absätze durch Leerzeilen getrennt, keine Überschriften, kein Markdown, keine Regieanweisungen, keine URLs).
    1'500 bis 2'000 Wörter (10 bis 15 Minuten). Einstieg: "This is AI News Weekly, presented by Roger Basler de Roca." und die Woche. Danach die fünf Rubriken mit Überleitung, je die Meldungen und ihre Einordnung, Schluss mit einer verdichteten Kernaussage.
-   Nur Fakten aus den ausgewählten Artikeln. Quellen dürfen im Skript namentlich genannt werden ("Reuters reports ...").
+   Nur Fakten aus den ausgewählten Artikeln. Quellen dürfen im Skript namentlich genannt werden ("TechCrunch reports ...").
 
 6. **Prüfen**
    - `pnpm exec tsc --noEmit` muss fehlerfrei sein.
    - Genau 15 Artikel, 3 pro Rubrik, keine doppelten `id` oder `url`.
-   - Kein Gedankenstrich (— oder –) in Daten und Skript, nur gerade Anführungszeichen.
+   - Kein Gedankenstrich (— oder –) in Daten und Skript, nur gerade Anführungszeichen und Apostrophe. Steht ein Gedankenstrich im Originaltitel, durch ein Komma ersetzen.
+   - `archive.ts` enthält die Vorwoche als ersten Eintrag.
 
 7. **Bauen**: `bash automation/publish.sh` (baut die Seite und kopiert sie nach `docs/`).
 
@@ -63,7 +71,8 @@ Inhalt der Website: `client/src/data/sampleData.ts` (Typen in `client/src/types/
 ## Aufbau des Repos
 
 ```
-client/src/data/sampleData.ts   Inhalt der aktuellen Ausgabe (einzige Datenquelle)
+client/src/data/sampleData.ts   Inhalt der aktuellen Ausgabe
+client/src/data/archive.ts      frühere Ausgaben, neueste zuerst
 podcast/script.txt              gesprochenes Skript der aktuellen Folge
 client/public/podcast/          MP3 und Cover (MP3 wird von der Action ersetzt)
 automation/publish.sh           Build und Kopie nach docs/
