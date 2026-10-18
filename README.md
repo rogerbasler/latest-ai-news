@@ -29,7 +29,7 @@ This project delivers curated AI news and insights from leading international so
 - **UI Components**: shadcn/ui
 - **Build Tool**: Vite
 - **Hosting**: GitHub Pages
-- **Automation**: Manus AI scheduled tasks
+- **Automation**: Claude scheduled task (content) and GitHub Actions with HeyGen (audio)
 
 ## Live Website
 
@@ -37,15 +37,7 @@ Visit the live website at: [https://rogerbasler.github.io/latest-ai-news/](https
 
 ## Automation
 
-This project uses automated workflows to:
-- Collect news from multiple English-language sources
-- Categorize articles using AI
-- Generate podcast scripts
-- Create audio episodes with text-to-speech
-- Update the website automatically
-- Deploy to GitHub Pages
-
-Updates are scheduled every Sunday at 6:00 AM.
+Every Sunday morning a Claude scheduled task researches the past seven days, selects 15 articles (3 per category), writes `client/src/data/sampleData.ts` and the podcast script `podcast/script.txt`, builds the site into `docs/` and pushes to `main`. The push of a new script starts the GitHub Action `Podcast audio`, which creates the MP3 with HeyGen and publishes it. The full procedure is in [CLAUDE.md](CLAUDE.md).
 
 ## Host
 

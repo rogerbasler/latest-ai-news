@@ -107,3 +107,6 @@ temp/
 
 # Temporary / signed URLs from research runs
 **/report_urls.txt
+
+# Podcast build parts
+podcast/.parts/
