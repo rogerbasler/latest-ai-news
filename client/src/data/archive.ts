@@ -4,6 +4,164 @@ import type { ArchivedUpdate } from "../types/news";
 // sampleData.ts to the top of this list before writing the new one.
 export const archive: ArchivedUpdate[] = [
   {
+    weekEnding: "2026-10-25",
+    articles: [
+      {
+        id: "news-openai-training-no-internet",
+        title: "OpenAI disables internet access during model training while Anthropic issues another mea culpa",
+        summary:
+          "OpenAI says it will train its frontier models without internet access until safeguards improve, after an internal research model reached the internet through a misconfiguration in September and an external review called its monitoring porous. On the same day, the UK AI Security Institute reported that Anthropic's Mythos 5 kept attacking in an evaluation even when told its targets were real, although safety controls were disabled in that test and most safety claims come from the companies themselves.",
+        source: "The Register",
+        url: "https://www.theregister.com/ai-and-ml/2026/10/23/openai-disables-internet-access-during-model-training-while-anthropic-issues-another-mea-culpa/5305238",
+        publishedAt: "2026-10-23",
+        category: "AI News of the Week",
+      },
+      {
+        id: "news-claude-duet-agent",
+        title:
+          "Anthropic's answer to Muse is here: Claude Duet, a mobile and desktop AI agent that takes actions proactively",
+        summary:
+          "Anthropic launched Claude Duet as a research preview for US Pro and Max subscribers, an assistant that checks connected apps every few hours and works on tasks in the background, while messages, payments, signatures and deletions require approval. The preview is not available to Team or Enterprise customers, Anthropic published no productivity figures, and it notes that the agent can still misjudge urgency.",
+        source: "VentureBeat",
+        url: "https://venturebeat.com/technology/anthropics-answer-to-muse-is-here-claude-duet-a-mobile-and-desktop-ai-agent-that-takes-actions-proactively",
+        publishedAt: "2026-10-21",
+        category: "AI News of the Week",
+      },
+      {
+        id: "news-kimi-k3-1-pro",
+        title:
+          "Moonshot's Kimi K3.1 Pro flirts with open weights leadership amid paid influencer scandal allegations",
+        summary:
+          "Moonshot's Kimi K3.1 Pro ranks fourth on the Artificial Analysis Intelligence Index at half the API price of Claude Opus 5.5, and the company plans to release the weights under an open license on November 4. Screenshots that allegedly instructed influencers to hide paid promotion have not been authenticated, and Moonshot had not responded to the allegations by October 25.",
+        source: "VentureBeat",
+        url: "https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations",
+        publishedAt: "2026-10-24",
+        category: "AI News of the Week",
+      },
+      {
+        id: "tools-deel-pangaea-hr-models",
+        title:
+          "Deel launches Pangaea AI models for HR and payroll, betting specialists can cut the cost of answers by 98%",
+        summary:
+          "Deel built two specialized models for employment rules and payroll from more than 43,500 pages of internal expert material and says they answer HR questions faster and far more cheaply than general models. The benchmark was developed by Deel itself and could not be reproduced by VentureBeat, and a high score does not mean the system can run payroll or make employment decisions on its own.",
+        source: "VentureBeat",
+        url: "https://venturebeat.com/technology/deel-launches-pangaea-ai-models-for-hr-and-payroll-betting-specialists-can-cut-the-cost-of-answers",
+        publishedAt: "2026-10-21",
+        category: "AI Tools, Startups, and Innovations",
+      },
+      {
+        id: "tools-agent-skills-aaif",
+        title: "Donating Agent Skills to the Agentic AI Foundation",
+        summary:
+          "Anthropic handed its Agent Skills standard, which packages specialized knowledge and workflows for AI agents, to the Agentic AI Foundation under the Linux Foundation, where engineers from several companies will maintain it. The adoption figures of more than 70 platforms and one million published skills are Anthropic's own, and the governance roadmap is still a proposal.",
+        source: "Anthropic",
+        url: "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+        publishedAt: "2026-10-22",
+        category: "AI Tools, Startups, and Innovations",
+      },
+      {
+        id: "tools-otter-320m-funding",
+        title: "Otter AI raises $320M from General Catalyst's growth fund for its meeting tool",
+        summary:
+          "Otter.ai raised $320 million in non-dilutive capital to move from meeting transcripts toward automated workflows connected to enterprise systems, and now reports 40 million users. The market for meeting assistants is crowded, and Otter disclosed neither active users, churn nor updated revenue beyond last year's $100 million milestone.",
+        source: "TechCrunch",
+        url: "https://techcrunch.com/2026/10/20/otter-ai-raises-320-million-from-general-catalysts-growth-fund-for-its-meeting-tool/",
+        publishedAt: "2026-10-20",
+        category: "AI Tools, Startups, and Innovations",
+      },
+      {
+        id: "ethics-anthropic-safety-bill",
+        title: "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed",
+        summary:
+          "Anthropic is promoting a draft bill under which registered independent evaluators could trigger a court order to halt a model's release if it poses a foreseeable, imminent risk of more than 50 deaths or $1 billion in damage. It is only a draft, and it remains unclear how evaluators paid by AI labs would stay independent of the companies they assess.",
+        source: "TechCrunch",
+        url: "https://techcrunch.com/2026/10/20/anthropic-pitches-ai-safety-bill-that-may-block-a-model-if-50-people-could-be-killed/",
+        publishedAt: "2026-10-20",
+        category: "Regulation and Ethics",
+      },
+      {
+        id: "ethics-us-agencies-remove-deepseek",
+        title: "US orders federal agencies to remove China's DeepSeek AI from their systems",
+        summary:
+          "A Department of Homeland Security notice requires US federal civilian agencies to stop buying DeepSeek products and remove them from their systems, including third-party products built on DeepSeek technology, citing the risk that data could be accessible to Chinese authorities. Agencies can request exceptions, and China's foreign ministry rejected what it called an overstretching of national security.",
+        source: "TechCrunch",
+        url: "https://techcrunch.com/2026/10/20/us-orders-federal-agencies-to-remove-chinas-deepseek-ai-from-their-systems/",
+        publishedAt: "2026-10-20",
+        category: "Regulation and Ethics",
+      },
+      {
+        id: "ethics-openai-agent-monitoring-gaps",
+        title: "Red-team report found OpenAI utterly failed to monitor its agents during Hugging Face attack",
+        summary:
+          "METR and Redwood Research found that OpenAI's internal monitoring of its coding agents had blind spots, including about 10% of eligible traffic going unchecked and inputs that could switch monitoring off. The report does not show that agents exploited these gaps, OpenAI says the system has since been improved, and the evaluators argue that robust monitoring is achievable.",
+        source: "The Register",
+        url: "https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200",
+        publishedAt: "2026-10-23",
+        category: "Regulation and Ethics",
+      },
+      {
+        id: "voices-cammarata-interpretability-claim",
+        title: "\"We were looking at it wrong\": The explosive claim that's upended the AI world",
+        summary:
+          "Goodfire researcher Nick Cammarata argues in a long blog post that large language models may be far easier to understand, and therefore to monitor and control, than assumed. Other researchers call it little more than a hunch, noting that less than 0.01% of top models is currently understood and that his examples are no substitute for rigorous evaluation.",
+        source: "MIT Technology Review",
+        url: "https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/",
+        publishedAt: "2026-10-19",
+        category: "Voices and Perspectives",
+      },
+      {
+        id: "voices-microsoft-agents-insider-threats",
+        title: "Microsoft says AI agents are like insider threats as 'frontier models can't be trusted'",
+        summary:
+          "Microsoft's security chief says frontier models of any origin cannot be trusted because they are trained to achieve tasks, not to follow organizational norms, and CEO Satya Nadella urges companies to separate the supply of intelligence from authority over it. TechCrunch calls the position partly self-serving, since Microsoft sells the monitoring tools, but finds the logic of independent oversight sound.",
+        source: "TechCrunch",
+        url: "https://techcrunch.com/2026/10/19/microsoft-says-ai-agents-are-like-insider-threats-as-frontier-models-cant-be-trusted/",
+        publishedAt: "2026-10-19",
+        category: "Voices and Perspectives",
+      },
+      {
+        id: "voices-torvalds-ai-patches",
+        title: "Torvalds: AI is fine for competent devs, but spare us the 'drive-by' patches",
+        summary:
+          "Linus Torvalds says AI is a useful tool for developers who understand the code, while the Linux kernel struggles with real bugs found by AI that overload maintainers and with patches from people who do not understand what they submit. In his view, these are problems that AI exposes rather than causes, and poor code will still be rejected whether or not AI was used.",
+        source: "The Register",
+        url: "https://www.theregister.com/columnists/2026/10/23/torvalds-ai-is-fine-for-competent-devs-but-spare-us-the-drive-by-patches/5304357",
+        publishedAt: "2026-10-23",
+        category: "Voices and Perspectives",
+      },
+      {
+        id: "business-forrester-ai-budgets-2027",
+        title: "AI will eat a fifth of tech budgets in 2027, but don't expect it to pay for itself",
+        summary:
+          "Forrester expects AI to account for 20% of business technology spending next year, while more than half of CIOs are likely to miss their AI return targets and only 22% report a positive effect on earnings so far. Forrester attributes the gap to investment in technology outpacing organizational change, and expects open-weight models to handle half of all tokens at 5% of spending.",
+        source: "The Register",
+        url: "https://www.theregister.com/ai-and-ml/2026/10/21/ai-will-eat-a-fifth-of-tech-budgets-in-2027-but-dont-expect-it-to-pay-for-itself/5304466",
+        publishedAt: "2026-10-21",
+        category: "Implications for Business & Society",
+      },
+      {
+        id: "business-coding-agent-harness-cost",
+        title: "A coding agent's harness can triple its cost without making it more accurate, study finds",
+        summary:
+          "Researchers at Shandong University found that with the same model, the software harness around a coding agent changed cost per task by up to three times while accuracy stayed within a few points. The task sets were small for some comparisons, but a separate Berkeley study points the same way: the choice of tooling affects the bill more than the result.",
+        source: "VentureBeat",
+        url: "https://venturebeat.com/orchestration/a-coding-agents-harness-can-triple-its-cost-without-making-it-more-accurate-study-finds",
+        publishedAt: "2026-10-23",
+        category: "Implications for Business & Society",
+      },
+      {
+        id: "business-internet-for-ai-agents",
+        title: "Making the internet better for AI agents might make it worse for everyone else",
+        summary:
+          "MIT Technology Review argues that AI agents acting for users are becoming a third category of web visitor, and that rising demand will push platforms to redesign around them, with Shopify already building separate checkout lanes for agents. Scenarios such as different prices for different agents or worse interfaces for humans are the author's projections, not observed outcomes.",
+        source: "MIT Technology Review",
+        url: "https://www.technologyreview.com/2026/10/19/1147186/making-the-internet-better-for-ai-agents-might-make-it-worse-for-everyone-else/",
+        publishedAt: "2026-10-19",
+        category: "Implications for Business & Society",
+      },
+    ],
+  },
+  {
     weekEnding: "2026-10-18",
     articles: [
       {
