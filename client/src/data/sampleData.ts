@@ -9,8 +9,7 @@ export const sampleData: WeeklyUpdate = {
       "This week: Anthropic files for its IPO, Big Tech's AI spending strains cash flow, and the case for watching AI agents in real time grows stronger. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2026-11-01",
-    duration: "12:00",
-    audioPending: true,
+    duration: "12:42",
   },
   articles: [
     {
