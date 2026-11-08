@@ -9,8 +9,7 @@ export const sampleData: WeeklyUpdate = {
       "This week: OpenAI prices its cyber model at a premium, Anthropic says AI-accelerated AI development may be imminent, AI spending slows as price competition bites, and the US midterms put data centers on the ballot. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2026-11-08",
-    duration: "13:00",
-    audioPending: true,
+    duration: "13:04",
   },
   articles: [
     {
