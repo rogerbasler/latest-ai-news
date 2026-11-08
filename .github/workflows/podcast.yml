@@ -1,11 +1,11 @@
 name: Podcast audio
 
-# Runs after the weekly Claude update pushes a new podcast/script.txt.
+# Runs after the weekly Claude update pushes a new podcast/script.txt, and when the voice settings change.
 # Creates the MP3 with ElevenLabs (Roger's cloned voice), rebuilds docs/ and commits the result.
 on:
   push:
     branches: [main]
-    paths: [podcast/script.txt]
+    paths: [podcast/script.txt, automation/voice.json, automation/tts_elevenlabs.py, .github/workflows/podcast.yml]
   workflow_dispatch:
 
 permissions:
