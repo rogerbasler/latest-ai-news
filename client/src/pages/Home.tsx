@@ -183,6 +183,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ThinkRoger essay */}
+      <section className="py-12 border-t border-border/50">
+        <div className="container">
+          <div className="max-w-3xl mx-auto rounded-lg border border-primary/30 bg-card/40 p-6 sm:p-8 text-center space-y-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">ThinkRoger</p>
+            <h3 className="text-2xl font-bold">From the news to the decision</h3>
+            <p className="text-muted-foreground">
+              Every Thursday, Roger Basler de Roca takes one question further: does AI make a decision
+              better, or only faster? A research-based essay, read in his own voice.
+            </p>
+            <a
+              href="https://thinkroger.substack.com"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              Read ThinkRoger on Substack
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-8 border-t border-border/50 bg-card/30">
         <div className="container">
@@ -190,6 +212,12 @@ export default function Home() {
             <p>© {new Date().getFullYear()} {APP_TITLE}. All rights reserved.</p>
             <p className="mt-2">
               Curated with care by Roger Basler de Roca
+            </p>
+            <p className="mt-2">
+              Weekly essays:{" "}
+              <a href="https://thinkroger.substack.com" target="_blank" rel="noopener" className="underline hover:text-foreground">
+                thinkroger.substack.com
+              </a>
             </p>
           </div>
         </div>

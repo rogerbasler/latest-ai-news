@@ -34,6 +34,7 @@ Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `clie
 
 5. **Podcast-Skript** nach `podcast/script.txt` (nur gesprochener Text, Absätze durch Leerzeilen getrennt, keine Überschriften, kein Markdown, keine Regieanweisungen, keine URLs).
    1'500 bis 2'000 Wörter (10 bis 15 Minuten). Einstieg: "This is AI News Weekly, presented by Roger Basler de Roca." und die Woche. Danach die fünf Rubriken mit Überleitung, je die Meldungen und ihre Einordnung, Schluss mit einer verdichteten Kernaussage.
+   Direkt nach der Kernaussage, als letzter Absatz und wortgetreu: "If you want one of these stories taken further, every Thursday I publish an essay on what AI does to our decisions. You can read it, or hear it in my own voice, at thinkroger dot substack dot com."
    Nur Fakten aus den ausgewählten Artikeln. Quellen dürfen im Skript namentlich genannt werden ("TechCrunch reports ...").
 
 6. **Prüfen**
