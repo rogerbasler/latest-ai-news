@@ -1,7 +1,7 @@
 name: Podcast audio
 
 # Runs after the weekly Claude update pushes a new podcast/script.txt.
-# Creates the MP3 with HeyGen, rebuilds docs/ and commits the result.
+# Creates the MP3 with ElevenLabs (Roger's cloned voice), rebuilds docs/ and commits the result.
 on:
   push:
     branches: [main]
@@ -24,10 +24,10 @@ jobs:
 
       - name: Check secret
         env:
-          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: |
-          if [ -z "$HEYGEN_API_KEY" ]; then
-            echo "::error::Secret HEYGEN_API_KEY fehlt (Settings > Secrets and variables > Actions)."
+          if [ -z "$ELEVENLABS_API_KEY" ]; then
+            echo "::error::Secret ELEVENLABS_API_KEY fehlt (Settings > Secrets and variables > Actions)."
             exit 1
           fi
 
@@ -42,8 +42,8 @@ jobs:
 
       - name: Generate audio
         env:
-          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
-        run: python3 automation/tts_heygen.py
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python3 automation/tts_elevenlabs.py
 
       - uses: pnpm/action-setup@v4
 

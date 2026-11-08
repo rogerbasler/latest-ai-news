@@ -42,8 +42,8 @@ TechCrunch reports on spending data from the finance platform Ramp. Token spendi
 
 The third item fits the same pattern. The Register reports on a Gartner paper that expects open-weight models to run ninety percent of enterprise agent workflow steps by 2030. In the best case, Gartner says, open models handle routine steps at a twentieth of the cost of running a frontier model on every step. Gartner itself puts the realistic saving closer to five or six times, because open models are more verbose and retry more often, and it names control over data as the main benefit. The cost saving, in Gartner's words, is a bonus.
 
-Put these stories side by side and a pattern emerges. At the frontier, capability is becoming scarcer, pricier and more tightly controlled, from cyber models sold to vetted buyers to labs warning about AI that accelerates its own development. Below the frontier, the routine work is moving to cheaper and often self-hosted models, and buyers are learning to manage tokens like any other operating cost. The strategic decision for companies is therefore no longer which model is best. It is which tasks deserve the frontier, and which do not.
+Put these stories side by side and a pattern emerges. At the frontier, capability is becoming scarcer, pricier and more tightly controlled, from cyber models sold to vetted buyers to labs warning about AI that accelerates its own development. Below the frontier, the routine work is moving to cheaper and often self-hosted models, and buyers are learning to manage tokens like any other operating cost. The strategic decision for companies is no longer which model is best. It is which tasks deserve the frontier, and which do not.
 
 The value of AI is decided less by the most powerful model than by knowing where it is not needed.
 
-That was AI News Weekly. Thank you for listening, and see you next Sunday.
+If you want one of these stories taken further, every Thursday I publish an essay on what AI does to our decisions. You can read it, or hear it in my own voice, at thinkroger dot substack dot com.

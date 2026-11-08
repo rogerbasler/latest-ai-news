@@ -35,6 +35,7 @@ Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `clie
 5. **Podcast-Skript** nach `podcast/script.txt` (nur gesprochener Text, Absätze durch Leerzeilen getrennt, keine Überschriften, kein Markdown, keine Regieanweisungen, keine URLs).
    1'500 bis 2'000 Wörter (10 bis 15 Minuten). Einstieg: "This is AI News Weekly, presented by Roger Basler de Roca." und die Woche. Danach die fünf Rubriken mit Überleitung, je die Meldungen und ihre Einordnung, Schluss mit einer verdichteten Kernaussage.
    Direkt nach der Kernaussage, als letzter Absatz und wortgetreu: "If you want one of these stories taken further, every Thursday I publish an essay on what AI does to our decisions. You can read it, or hear it in my own voice, at thinkroger dot substack dot com."
+   Keine eigene Verabschiedung und keine KI-Deklaration ins Skript schreiben: Die Action spricht die Deklaration (KI-Recherche, geklonte Stimme, Verabschiedung) automatisch als Schluss.
    Nur Fakten aus den ausgewählten Artikeln. Quellen dürfen im Skript namentlich genannt werden ("TechCrunch reports ...").
 
 6. **Prüfen**
@@ -51,7 +52,7 @@ Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `clie
    git commit -m "Weekly AI News Update - $DATUM"
    git push origin main    # bei Konflikt: git pull --rebase origin main, neu bauen, erneut pushen
    ```
-   Der Push von `podcast/script.txt` startet die GitHub Action `Podcast audio`. Sie erzeugt das MP3 mit HeyGen (Secret `HEYGEN_API_KEY`), trägt die echte Dauer ein, baut neu und committet. Die Claude-Sitzung erzeugt kein Audio und erreicht HeyGen nicht.
+   Der Push von `podcast/script.txt` startet die GitHub Action `Podcast audio`. Sie erzeugt das MP3 mit ElevenLabs in Rogers geklonter Stimme "Roger de Roca English" (Secret `ELEVENLABS_API_KEY`), hängt die KI-Deklaration aus `automation/voice.json` als letzten Absatz an, trägt die echte Dauer ein, baut neu und committet. Die Claude-Sitzung erzeugt kein Audio und erreicht ElevenLabs nicht.
 
 9. **Abschluss**: kurze Meldung mit Datum, den 15 Titeln nach Rubrik, Wortzahl des Skripts und dem Link zur Seite.
 
@@ -77,8 +78,8 @@ client/src/data/archive.ts      frühere Ausgaben, neueste zuerst
 podcast/script.txt              gesprochenes Skript der aktuellen Folge
 client/public/podcast/          MP3 und Cover (MP3 wird von der Action ersetzt)
 automation/publish.sh           Build und Kopie nach docs/
-automation/tts_heygen.py        Audio mit HeyGen (läuft nur in GitHub Actions)
-automation/voice.json           gewählte Stimme und Tempo
+automation/tts_elevenlabs.py    Audio mit ElevenLabs, Rogers Stimme (läuft nur in GitHub Actions)
+automation/voice.json           Stimme, Modell, Einstellungen und KI-Deklaration
 .github/workflows/podcast.yml   Audio-Action
 docs/                           gebaute Website (GitHub Pages)
 ```

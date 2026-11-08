@@ -29,7 +29,7 @@ This project delivers curated AI news and insights from leading international so
 - **UI Components**: shadcn/ui
 - **Build Tool**: Vite
 - **Hosting**: GitHub Pages
-- **Automation**: Claude scheduled task (content) and GitHub Actions with HeyGen (audio)
+- **Automation**: Claude scheduled task (content) and GitHub Actions with ElevenLabs (audio, Roger's cloned voice, AI disclosure at the end)
 
 ## Live Website
 
@@ -37,7 +37,7 @@ Visit the live website at: [https://rogerbasler.github.io/latest-ai-news/](https
 
 ## Automation
 
-Every Sunday morning a Claude scheduled task researches the past seven days, selects 15 articles (3 per category), writes `client/src/data/sampleData.ts` and the podcast script `podcast/script.txt`, builds the site into `docs/` and pushes to `main`. The push of a new script starts the GitHub Action `Podcast audio`, which creates the MP3 with HeyGen and publishes it. The full procedure is in [CLAUDE.md](CLAUDE.md).
+Every Sunday morning a Claude scheduled task researches the past seven days, selects 15 articles (3 per category), writes `client/src/data/sampleData.ts` and the podcast script `podcast/script.txt`, builds the site into `docs/` and pushes to `main`. The push of a new script starts the GitHub Action `Podcast audio`, which creates the MP3 with ElevenLabs in Roger's cloned voice, ends it with an AI disclosure and publishes it. The full procedure is in [CLAUDE.md](CLAUDE.md).
 
 ## Host
 

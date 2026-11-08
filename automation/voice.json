@@ -1,10 +1,17 @@
 {
+  "provider": "elevenlabs",
   "voice": {
-    "name": "Akio - Clear & Professional",
-    "voice_id": "b14f72c374434467936ca613cf0b70e3",
-    "language": "English"
+    "name": "Roger de Roca English",
+    "voice_id": "oKSCYblyhL3VInOYM5uz"
   },
-  "gender": "male",
+  "model_id": "eleven_multilingual_v2",
   "language": "en",
-  "speed": 1.0
+  "voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true,
+    "speed": 1.0
+  },
+  "disclosure": "A note on how this episode was made. The news was researched and the script written with the help of AI, and the voice you have been listening to is an AI-generated clone of my own voice, created with ElevenLabs. Thank you for listening, and see you next Sunday."
 }
