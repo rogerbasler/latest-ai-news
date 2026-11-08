@@ -110,3 +110,4 @@ temp/
 
 # Podcast build parts
 podcast/.parts/
+__pycache__/
