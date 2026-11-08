@@ -6,8 +6,10 @@ weekly Claude run cannot reach the ElevenLabs API.
 
 - Reads the spoken script from podcast/script.txt (plain text, paragraphs
   separated by blank lines).
-- Appends the AI disclosure from automation/voice.json as the final paragraph,
-  so every episode ends with it, whatever the weekly script contains.
+- Appends the AI disclosure from automation/voice.json as a separate final
+  part, after a longer pause, so every episode ends with it.
+- Pauses: break tags between paragraphs inside a chunk, and silence between
+  chunks and before the disclosure (lengths in voice.json under "pauses").
 - Voice, model and voice settings come from automation/voice.json.
 - The text is split into chunks at paragraph boundaries. Each chunk is
   synthesised with the neighbouring text as context (previous_text/next_text),
@@ -58,14 +60,30 @@ def load_cfg():
     return cfg
 
 
-def full_text(cfg):
+def script_text():
     text = SCRIPT.read_text(encoding="utf-8").strip()
     if len(text.split()) < 300:
         raise RuntimeError("podcast/script.txt is missing or too short")
-    disclosure = (cfg.get("disclosure") or "").strip()
-    if disclosure and disclosure not in text:
-        text = f"{text}\n\n{disclosure}"
     return text
+
+
+def with_breaks(chunk, seconds):
+    """Spoken text for one chunk: paragraphs joined by a break tag."""
+    paras = [p.strip() for p in re.split(r"\n\s*\n", chunk) if p.strip()]
+    if seconds <= 0:
+        return "\n\n".join(paras)
+    return f' <break time="{seconds:.1f}s" /> '.join(paras)
+
+
+def silence(path, seconds):
+    subprocess.run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+                    "-t", f"{seconds:.2f}", "-c:a", "pcm_s16le", str(path)],
+                   check=True, capture_output=True)
+
+
+def to_wav(src, dst):
+    subprocess.run(["ffmpeg", "-y", "-i", str(src), "-ar", "44100", "-ac", "1",
+                    "-c:a", "pcm_s16le", str(dst)], check=True, capture_output=True)
 
 
 def chunks(text):
@@ -122,18 +140,32 @@ def duration(path):
 
 def main():
     cfg = load_cfg()
-    parts_text = chunks(full_text(cfg))
+    pauses = cfg.get("pauses", {})
+    para_pause = float(pauses.get("paragraph", 0))
+    chunk_pause = float(pauses.get("chunk", 0))
+    disc_pause = float(pauses.get("before_disclosure", 0))
+    parts_text = chunks(script_text())
+    disclosure = (cfg.get("disclosure") or "").strip()
     WORK.mkdir(parents=True, exist_ok=True)
-    parts = []
-    for i, chunk in enumerate(parts_text):
+    seq = []
+    n = len(parts_text) + (1 if disclosure else 0)
+    for i in range(n):
+        is_disc = i == len(parts_text)
+        chunk = disclosure if is_disc else parts_text[i]
         prev_text = parts_text[i - 1] if i > 0 else ""
         next_text = parts_text[i + 1] if i + 1 < len(parts_text) else ""
-        p = WORK / f"part-{i:02d}.mp3"
-        synth(chunk, prev_text, next_text, cfg, p)
-        parts.append(p)
-        log(f"chunk {i + 1}/{len(parts_text)} done ({len(chunk)} chars)")
+        mp3 = WORK / f"part-{i:02d}.mp3"
+        synth(with_breaks(chunk, para_pause), prev_text, next_text, cfg, mp3)
+        wav = WORK / f"part-{i:02d}.wav"
+        to_wav(mp3, wav)
+        if seq:
+            gap = WORK / f"gap-{i:02d}.wav"
+            silence(gap, disc_pause if is_disc else chunk_pause)
+            seq.append(gap)
+        seq.append(wav)
+        log(f"part {i + 1}/{n} done ({len(chunk)} chars)")
     lst = WORK / "concat.txt"
-    lst.write_text("\n".join(f"file '{p.name}'" for p in parts), encoding="utf-8")
+    lst.write_text("\n".join(f"file '{p.name}'" for p in seq), encoding="utf-8")
     tmp = WORK / "episode.mp3"
     subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-vn",
                     "-acodec", "libmp3lame", "-ab", "128k", "-ar", "44100", "-ac", "1", str(tmp)],
@@ -150,7 +182,7 @@ def main():
     data = re.sub(r'duration:\s*"[^"]*"', f'duration: "{mmss}"', data, count=1)
     data = re.sub(r"\n\s*audioPending:\s*true,", "", data)
     DATA.write_text(data, encoding="utf-8")
-    print(f"{len(parts)} chunks, duration {mmss}, voice {cfg['voice'].get('name')}")
+    print(f"{n} parts, duration {mmss}, voice {cfg['voice'].get('name')}")
 
 
 if __name__ == "__main__":

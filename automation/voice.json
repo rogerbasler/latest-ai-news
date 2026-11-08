@@ -7,11 +7,16 @@
   "model_id": "eleven_multilingual_v2",
   "language": "en",
   "voice_settings": {
-    "stability": 0.5,
+    "stability": 0.38,
     "similarity_boost": 0.8,
-    "style": 0.0,
+    "style": 0.25,
     "use_speaker_boost": true,
-    "speed": 1.0
+    "speed": 0.94
+  },
+  "pauses": {
+    "paragraph": 0.9,
+    "chunk": 1.1,
+    "before_disclosure": 1.6
   },
   "disclosure": "A note on how this episode was made. The news was researched and the script written with the help of AI, and the voice you have been listening to is an AI-generated clone of my own voice, created with ElevenLabs. Thank you for listening, and see you next Sunday."
 }
