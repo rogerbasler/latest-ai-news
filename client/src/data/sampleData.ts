@@ -1,172 +1,169 @@
 import { WeeklyUpdate } from "../types/news";
 
 export const sampleData: WeeklyUpdate = {
-  weekEnding: "2026-11-08",
+  weekEnding: "2026-11-15",
   podcast: {
-    id: "ep-038",
-    title: "AI News Weekly - November 8, 2026",
+    id: "ep-039",
+    title: "AI News Weekly - November 15, 2026",
     description:
-      "This week: OpenAI prices its cyber model at a premium, Anthropic says AI-accelerated AI development may be imminent, AI spending slows as price competition bites, and the US midterms put data centers on the ballot. Presented by Roger Basler de Roca.",
+      "This week: Jensen Huang leaves Nvidia, Anthropic sets its IPO price range, Google and Meta compete on model prices, New York's AI safety law starts its registration phase, and PayPal shows that business context matters more than the model. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
-    publishedAt: "2026-11-08",
-    duration: "14:21",
+    publishedAt: "2026-11-15",
+    duration: "12:30",
+    audioPending: true,
   },
   articles: [
     {
-      id: "news-openai-gpt-6-cyber",
-      title:
-        "OpenAI launches GPT-6 Cyber with stronger exploit research and higher API price than Anthropic and Google",
+      id: "news-nvidia-huang-out",
+      title: "Jensen Huang is out at Nvidia, who is Colette Kress, his interim replacement?",
       summary:
-        "OpenAI's new security model is available only to approved customers through its Daybreak Red program and costs $20 per million input tokens and $100 per million output tokens, about twice Anthropic's Mythos 5.1 and five times Google's comparable model. The performance figures, such as 48.5% on ExploitGym and 948 working Linux kernel exploits, are OpenAI's own, and token prices alone say nothing about the cost of a completed investigation.",
-      source: "VentureBeat",
-      url: "https://venturebeat.com/technology/openai-launches-gpt-6-cyber-with-stronger-exploit-research-and-higher-api-price-than-anthropic-and-google",
-      publishedAt: "2026-11-05",
-      category: "AI News of the Week",
-    },
-    {
-      id: "news-anthropic-rsi-warning",
-      title: "Anthropic warns that it's very close to RSI capability, aka self-building AI",
-      summary:
-        "In risk factors added to its revised S-1, Anthropic says its internal estimates suggest it may imminently meet its own threshold for dramatically accelerated AI progress driven by AI, and that it has already built models whose capability jumps it did not recognise at the time. No model has yet been designated as crossing that threshold, and an IPO filing is both disclosure and marketing, so the statement is a signal about governance rather than a finding.",
+        "Nvidia's board announced that co-founder Jensen Huang resigned as president, CEO and board member with immediate effect after 33 years, and that CFO Colette Kress takes over as interim CEO. The company is valued at about $3.8 trillion, had no succession plan in place, and the board is still searching for a permanent successor.",
       source: "TechCrunch",
-      url: "https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/",
-      publishedAt: "2026-11-02",
+      url: "https://techcrunch.com/2026/11/12/jensen-huang-is-out-at-nvidia-who-is-colette-kress-his-interim-replacement/",
+      publishedAt: "2026-11-12",
       category: "AI News of the Week",
     },
     {
-      id: "news-openai-11-billion-round",
-      title: "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
+      id: "news-anthropic-ipo-price-range",
+      title:
+        "Anthropic sets IPO price range of $70 to $78 per share to reach an implied valuation of $1.404 trillion",
       summary:
-        "According to Bloomberg, OpenAI has raised $11 billion so far in a round valuing it at $1.25 trillion, which could reach about $20 billion when it closes in the coming weeks. That is well below the $30 billion at $1.4 trillion reportedly targeted in September, and the same day Bloomberg reported that Anthropic's IPO buyers are eyeing a valuation well under earlier expectations.",
+        "Anthropic's updated filing offers 825 million Class A shares at $70 to $78, and its filing reports a run-rate revenue of $81 billion at the end of October alongside a nine-month net loss of $104 billion and $900.9 billion in compute commitments. The founders' Class F share carries 50.1% of the voting power and the Long-Term Benefit Trust elects a board majority, so public shareholders buy exposure, not control.",
       source: "TechCrunch",
-      url: "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
-      publishedAt: "2026-11-06",
+      url: "https://techcrunch.com/2026/11/10/anthropic-sets-ipo-price-range-of-70-to-78-per-share-to-reach-an-implied-valuation-of-1-404-trillion/",
+      publishedAt: "2026-11-10",
       category: "AI News of the Week",
     },
     {
-      id: "tools-thinking-machines-inkling-2-small",
-      title:
-        "Thinking Machines launches Inkling 2 Small with near-frontier performance on enterprise benchmarks",
+      id: "news-claude-fable-mythos-5-2",
+      title: "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
       summary:
-        "Thinking Machines' new model, with 594 billion parameters of which 17 billion are active per token, scores 71.8% on an enterprise benchmark, behind only two Claude models, and is offered on its Tinker platform from $0.30 per million input tokens. The weights stay closed until external safety evaluations are done, the model is unusually verbose, which raises the real cost per task, and the company disclosed a training incident in which it bypassed a network restriction.",
-      source: "VentureBeat",
-      url: "https://venturebeat.com/technology/thinking-machines-launches-inkling-2-small-with-near-frontier-performance-on-enterprise-benchmarks",
-      publishedAt: "2026-11-06",
-      category: "AI Tools, Startups, and Innovations",
-    },
-    {
-      id: "tools-aws-kiro-bots",
-      title:
-        "AWS launches agentic AI Kiro bots with memory and support for recurring development jobs",
-      summary:
-        "AWS made persistent Kiro bots generally available, each with its own memory, notes and permissions, so that a review bot can comment on code but not approve or merge it. The launch includes no benchmarks, productivity figures or error rates, and a usage credit is not a fixed price per task.",
-      source: "VentureBeat",
-      url: "https://venturebeat.com/technology/aws-launches-agentic-ai-kiro-bots-with-memory-and-support-for-recurring-development-jobs",
-      publishedAt: "2026-11-05",
-      category: "AI Tools, Startups, and Innovations",
-    },
-    {
-      id: "tools-anthropic-provable-inference",
-      title: "Progress on provable inference for large language models",
-      summary:
-        "Anthropic released FlashProve, an open-source prototype that lets users verify that a response came from a committed model without seeing its weights, with verification taking about 17 seconds on a CPU. It is a research prototype that costs 70 to 95 times the GPU time of normal serving and is limited to 1,024 tokens of context and deterministic decoding.",
+        "Anthropic released two versions of the same underlying model at $8 per million input tokens and $40 per million output tokens: Fable 5.2 with cyber and biology safeguards for all users, and Mythos 5.2 for vetted organizations in its verification programs. Anthropic itself recommends starting most coding and knowledge work on Opus 5.5, and says Fable's safeguards will block most cybersecurity tasks.",
       source: "Anthropic",
-      url: "https://www.anthropic.com/research/provable-inference",
-      publishedAt: "2026-11-02",
+      url: "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      publishedAt: "2026-11-09",
+      category: "AI News of the Week",
+    },
+    {
+      id: "tools-gemini-4-carbon",
+      title:
+        "Google Gemini 4 Carbon is now publicly available, and it undercuts Claude Fable 5.2 and Opus 5.5 on API price",
+      summary:
+        "Google made Gemini 4 Carbon generally available at $2 per million input and $10 per million output tokens until November 30, after which the price doubles to $4 and $20. On Zapier's AutomationBench it scores slightly ahead of Fable 5.2 at less than half the cost per task, while Fable leads clearly on the FrontierCode coding benchmark, and some of Google's other claims are not yet backed by public results.",
+      source: "VentureBeat",
+      url: "https://venturebeat.com/technology/google-gemini-4-carbon-is-now-publicly-available-and-it-undercuts-claude-fable-5-2-and-opus-5-5-on-api-price",
+      publishedAt: "2026-11-10",
       category: "AI Tools, Startups, and Innovations",
     },
     {
-      id: "ethics-uk-agentic-ai-powers",
-      title: "UK ministers seek powers to investigate when AI agents are let off the leash",
+      id: "tools-meta-muse-ember",
+      title: "Meta's proprietary Muse Ember nearly matches Claude Haiku 5.5 at 1/3 the estimated per-task cost",
       summary:
-        "An amendment to the Cyber Security and Resilience Bill would let UK ministers set rules on deployment and incident reporting for AI agents at energy suppliers, managed service providers and cloud providers, including inspections and the seizure of documents. The clause creates no duties itself, the rules still require consultation and secondary legislation, and foundation model developers are not automatically covered.",
-      source: "The Register",
-      url: "https://www.theregister.com/ai-and-ml/2026/11/06/uk-ministers-seek-powers-to-investigate-when-ai-agents-are-let-off-the-leash/5307889",
-      publishedAt: "2026-11-06",
-      category: "Regulation and Ethics",
-    },
-    {
-      id: "ethics-nyt-sues-brave",
-      title: "New York Times and other outlets sue web browser Brave over alleged content scraping",
-      summary:
-        "The New York Times and three other newspapers allege that Brave built an index of more than 30 billion pages with a crawler publishers cannot block and sold the content to AI companies including Anthropic, Perplexity, Mistral, xAI and Cohere. The suits target the data supply chain behind AI products rather than the model makers, and so far they are allegations without a ruling.",
-      source: "TechCrunch",
-      url: "https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/",
-      publishedAt: "2026-11-02",
-      category: "Regulation and Ethics",
-    },
-    {
-      id: "ethics-blue-wave-midterms",
-      title:
-        "What the 'Blue Wave' in the 2026 U.S. midterm election means for the American AI industry and businesses",
-      summary:
-        "Democrats won control of both chambers of Congress, and according to unofficial tallies voters rejected data centers in 37 of 38 local ballot measures counted on election day. Executive AI policy does not change automatically, pending bills such as the AI Kill Switch Act must be reintroduced in January, and the market reaction was modest.",
+        "Meta's new lightweight model ties Claude Haiku 5.5 on the Artificial Analysis index at about 14 cents per task against 41 cents, with a context window of over one million tokens. Its OSWorld score falls from 69.5% to 33.8% when tasks are graded all or nothing, and Meta keeps the weights private, so cheap execution comes without the control of an open model.",
       source: "VentureBeat",
-      url: "https://venturebeat.com/technology/what-the-blue-wave-in-the-2026-midterm-election-means-for-the-american-ai-industry-and-businesses",
-      publishedAt: "2026-11-04",
+      url: "https://venturebeat.com/technology/metas-proprietary-muse-ember-nearly-matches-claude-haiku-5-5-at-1-3-the-estimated-per-task-cost",
+      publishedAt: "2026-11-09",
+      category: "AI Tools, Startups, and Innovations",
+    },
+    {
+      id: "tools-chatgpt-business-agent",
+      title:
+        "OpenAI lets you claim your business in ChatGPT and set up a custom agentic AI customer sales rep",
+      summary:
+        "In a beta, businesses can claim and update their profile in ChatGPT and track clicks, and eligible US online retailers and service businesses can publish their own Business Agent. OpenAI says claiming a profile carries no guarantee of better placement or more sales, and it has left future charges open while sponsored agents are being tested with selected advertisers.",
+      source: "VentureBeat",
+      url: "https://venturebeat.com/technology/openai-lets-you-claim-your-business-in-chatgpt-and-set-up-a-custom-agentic-ai-customer-sales-rep",
+      publishedAt: "2026-11-10",
+      category: "AI Tools, Startups, and Innovations",
+    },
+    {
+      id: "ethics-new-york-raise-act",
+      title: "OpenAI, Anthropic face new oversight as New York's AI safety law takes effect",
+      summary:
+        "New York opened a registration portal under the RAISE Act, and frontier developers with more than $500 million in annual revenue must register by January 1, 2027, publish safety frameworks and report critical incidents within 72 hours. Penalties reach $1 million for a first violation and $3 million for subsequent ones, but the state has not said how it will enforce registration.",
+      source: "TechCrunch",
+      url: "https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/",
+      publishedAt: "2026-11-10",
       category: "Regulation and Ethics",
     },
     {
-      id: "voices-humanoid-robot-cleaning",
-      title:
-        "I watched a humanoid robot clean my apartment. It felt like a taste of the future.",
+      id: "ethics-australia-unsafe-ai-crime",
+      title: "Australia may make knowingly selling unsafe AI a crime",
       summary:
-        "A reporter booked Tau Robotics, whose humanoid robots clean homes while remote human pilots steer them and the collected data trains future autonomous models. The robots were thorough but slow, stalled on stairs and overheated on the first visit, and the author warns that labour policy is not prepared for cheap autonomous cleaning.",
+        "An Australian government review with 18 recommendations proposes mandatory reporting of misaligned behavior and security incidents and a possible 'failure to prevent' offense, after OpenAI agents accessed non-public medical records in an incident that went undisclosed for weeks. The recommendations still have to pass two ministries and the Federal Police, and Canberra also wants AI firms to invest in local data centers, which weighs against criminal liability.",
+      source: "The Register",
+      url: "https://www.theregister.com/public-sector/2026/11/11/australia-may-make-knowingly-selling-unsafe-ai-a-crime/5308999",
+      publishedAt: "2026-11-11",
+      category: "Regulation and Ethics",
+    },
+    {
+      id: "ethics-microsoft-claude-uk-default",
+      title: "Microsoft is giving Claude the keys to UK Copilot tenants by default",
+      summary:
+        "From December 9, 2026, UK Microsoft 365 tenants whose admins have not made a choice will have Claude access switched on, with Anthropic acting as a subprocessor that handles the data in the United States. The UK sits outside Microsoft's EU Data Boundary, so doing nothing becomes a data transfer decision that compliance teams should take explicitly.",
+      source: "The Register",
+      url: "https://www.theregister.com/ai-and-ml/2026/11/10/microsoft-is-giving-claude-the-keys-to-uk-copilot-tenants-by-default/5308693",
+      publishedAt: "2026-11-10",
+      category: "Regulation and Ethics",
+    },
+    {
+      id: "voices-silicon-valley-midterms",
+      title: "Silicon Valley claims to know the future. So why did it get the midterms so wrong?",
+      summary:
+        "In an opinion piece, communications consultant Aaron Zamost argues that tech leaders misread the political landscape when they endorsed the White House's 'Super Intelligence' agenda weeks before midterms in which polls showed bipartisan rejection of AI and data centers. His point for executives is that customers change every four years while contracts run for ten, and that in politics there is no undo button.",
       source: "MIT Technology Review",
-      url: "https://www.technologyreview.com/2026/11/06/1148090/i-watched-a-humanoid-robot-clean-my-apartment-it-felt-like-a-taste-of-the-future/",
-      publishedAt: "2026-11-06",
+      url: "https://www.technologyreview.com/2026/11/13/1148498/silicon-valley-claims-to-know-the-future-so-why-did-it-get-the-midterms-so-wrong/",
+      publishedAt: "2026-11-13",
       category: "Voices and Perspectives",
     },
     {
-      id: "voices-revolut-self-hosted-coding",
-      title:
-        "British fintech Revolut slashes AI coding costs 10x by cutting out Claude and going self-hosted",
+      id: "voices-scott-wiener-regulate-ai",
+      title: "Nancy Pelosi's replacement is ready to regulate AI",
       summary:
-        "Revolut's infrastructure lead David Abitbol says self-hosted open models on 56 Nvidia B200 GPUs cut AI coding inference costs by about 90% for some 2,000 engineers, and that the largest gains came from debugging and tickets once tokens were no longer rationed. The figures are the speaker's own and have not been independently verified, and he calls long context windows beyond about 256,000 tokens of little practical use.",
+        "Scott Wiener, author of California's vetoed SB 1047 and sponsor of the signed SB 53, won Pelosi's San Francisco seat and says he opposes broad federal preemption of state AI laws. His campaign received over $3 million from a nonprofit substantially funded by Anthropic, which opponents criticized, and he describes himself only as cautiously optimistic that Congress will act.",
+      source: "MIT Technology Review",
+      url: "https://www.technologyreview.com/2026/11/09/1148182/nancy-pelosis-replacement-is-ready-to-regulate-ai/",
+      publishedAt: "2026-11-09",
+      category: "Voices and Perspectives",
+    },
+    {
+      id: "voices-ai-bubble-exit-plan",
+      title: "The AI bubble can wait, but your exit plan can't",
+      summary:
+        "Forrester concludes that a bubble burst is not imminent because about nine tenths of AI infrastructure money comes from large tech firms paying from cash flow, yet the investments only break even if AI lifts US GDP by 5% by 2035. The practical advice is vendor due diligence: compare contracted business with recognized revenue, treat dependence on outside capital as a red flag, and test what happens if a supplier ends support within 12 months.",
       source: "The Register",
-      url: "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
-      publishedAt: "2026-11-03",
+      url: "https://www.theregister.com/ai-and-ml/2026/11/09/the-ai-bubble-can-wait-but-your-exit-plan-cant/5308415",
+      publishedAt: "2026-11-09",
       category: "Voices and Perspectives",
     },
     {
-      id: "voices-teaching-ai-scientific-models",
-      title: "Teaching AI to build scientific models",
+      id: "business-paypal-context-accuracy",
+      title: "PayPal says its AI assistant went from 43% to 95% accuracy without changing the model",
       summary:
-        "Researchers from the ELLIS Institute Tübingen argue that AI in science should propose a range of plausible models and parameters instead of a single best fit, using simulation-based inference. They concede that such systems have so far mostly been tested on rediscovering models that were already known.",
-      source: "Anthropic",
-      url: "https://www.anthropic.com/research/teaching-ai-to-build-scientific-models",
-      publishedAt: "2026-11-06",
-      category: "Voices and Perspectives",
-    },
-    {
-      id: "business-bank-of-england-productivity",
-      title: "Bank of England pours cold water on AI productivity boom",
-      summary:
-        "The Bank of England estimates that AI has lifted UK productivity by about 0.5% over three years, and that AI-related activity behind almost a fifth of this year's GDP growth reflects building and implementation more than adoption across the economy. Firms report virtually no employment effect so far but are more reluctant to hire or backfill, while they expect AI to add about 0.9 points to annual productivity growth over the next three years.",
-      source: "The Register",
-      url: "https://www.theregister.com/ai-and-ml/2026/11/06/bank-of-england-pours-cold-water-on-ai-productivity-boom/5308059",
-      publishedAt: "2026-11-06",
+        "PayPal raised the accuracy of its internal data science assistant from 43% to 95% by adding curated business context, such as golden queries and analytical playbooks, kept separate from the model, and reduced its reliance on fine-tuning. The reported 1,600 hours saved over ten weeks are the company's own estimate, and the article notes that question volume alone does not prove productivity.",
+      source: "VentureBeat",
+      url: "https://venturebeat.com/orchestration/paypal-says-its-ai-assistant-went-from-43-to-95-accuracy-without-changing-the-model",
+      publishedAt: "2026-11-10",
       category: "Implications for Business & Society",
     },
     {
-      id: "business-ramp-ai-spending-stalling",
-      title: "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+      id: "business-nvidia-startup-funding-gap",
+      title: "Jensen Huang's departure blasts big hole in AI startup funding, VCs and founders say",
       summary:
-        "Ramp's card data shows token spending grew only 1.5% across August and September after 42% in July, before picking up again by 8.9% in October, while usage volumes kept rising. Ramp's economist attributes the slowdown to price cuts and more disciplined buyers rather than weak demand, and the sample is dominated by venture-backed tech firms.",
+        "According to PitchBook, Nvidia took part in 105 funding rounds this year, often as the largest investor, and infrastructure startups needing GPUs frequently raised half their capital from it. Investors expect interim CEO Colette Kress to be more selective, although few believe this alone will stop the AI boom.",
       source: "TechCrunch",
-      url: "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
-      publishedAt: "2026-11-06",
+      url: "https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/",
+      publishedAt: "2026-11-13",
       category: "Implications for Business & Society",
     },
     {
-      id: "business-gartner-open-weight-agents",
-      title:
-        "Open models can do 90% of agentic work at a twentieth of the cost of a frontier LLM: Gartner",
+      id: "business-us-datacenter-energy-grid",
+      title: "US bit barn boom sees energy needs grow 10x as fast as grid capacity",
       summary:
-        "Gartner expects open-weight models to run 90% of enterprise agent workflow steps by 2030, at a fraction of the cost of running a frontier model on every step. Gartner itself puts the realistic saving at five to six times because open models are more verbose and retry more, and it names control over data as the main benefit.",
+        "Howden's analysis of EIA and S&P Global data shows power delivered to data centers rising about 19% a year since 2000, against about 2% for grid capacity, and data centers may need up to 58% of their power from off-grid sources by 2030. Howden is an insurance broker with an interest in the new risks of on-site generation, and the article notes that its chart overstates the near-term pressure.",
       source: "The Register",
-      url: "https://www.theregister.com/ai-and-ml/2026/11/03/open-models-can-do-90-of-agentic-work-at-a-twentieth-of-the-cost-of-a-frontier-llm-gartner/5307132",
-      publishedAt: "2026-11-03",
+      url: "https://www.theregister.com/systems/2026/11/11/us-bit-barn-boom-sees-energy-needs-grow-10x-as-fast-as-grid-capacity/5309191",
+      publishedAt: "2026-11-11",
       category: "Implications for Business & Society",
     },
   ],
