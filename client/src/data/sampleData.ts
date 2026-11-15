@@ -9,8 +9,7 @@ export const sampleData: WeeklyUpdate = {
       "This week: Jensen Huang leaves Nvidia, Anthropic sets its IPO price range, Google and Meta compete on model prices, New York's AI safety law starts its registration phase, and PayPal shows that business context matters more than the model. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2026-11-15",
-    duration: "12:30",
-    audioPending: true,
+    duration: "13:20",
   },
   articles: [
     {
