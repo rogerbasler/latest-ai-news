@@ -89,7 +89,7 @@ export default function PodcastPlayer({ episode }: PodcastPlayerProps) {
           <div className="mt-6 flex items-center gap-4">
             <button
               onClick={togglePlay}
-              className="flex h-14 w-14 shrink-0 items-center justify-center bg-primary text-primary-foreground transition-colors hover:bg-foreground"
+              className="flex h-14 w-14 shrink-0 items-center justify-center bg-primary text-primary-foreground transition-opacity hover:opacity-85"
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="ml-0.5 h-6 w-6" />}
@@ -103,7 +103,7 @@ export default function PodcastPlayer({ episode }: PodcastPlayerProps) {
                 onChange={handleSeek}
                 aria-label="Seek"
                 style={{
-                  background: `linear-gradient(to right, var(--cobalt) ${progress}%, #d8d1c3 ${progress}%)`,
+                  background: `linear-gradient(to right, var(--cobalt) ${progress}%, var(--muted) ${progress}%)`,
                 }}
                 className="h-1.5 w-full cursor-pointer appearance-none [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-foreground [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-foreground"
               />

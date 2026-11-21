@@ -90,6 +90,23 @@
   --sidebar-ring: var(--cobalt);
 }
 
+
+/* Dark mode: ink background, paper-coloured text, a lighter cobalt for contrast */
+.dark {
+  --paper: #121212;
+  --scrap: #1c1c1b;
+  --ink: #eee8dc;
+  --cobalt: #5b8cff;
+  --pink: #ff4fa8;
+  --secondary: #2a2927;
+  --muted: #2a2927;
+  --muted-foreground: #a8a196;
+  --border: var(--ink);
+  --input: var(--ink);
+  --sidebar-accent: #2a2927;
+  --sidebar-border: var(--ink);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -182,7 +199,7 @@
   }
   .scrap {
     background: var(--scrap);
-    box-shadow: 4px 5px 0 rgba(17, 17, 17, 0.12);
+    box-shadow: 4px 5px 0 color-mix(in srgb, var(--ink) 14%, transparent);
     position: relative;
   }
   .tape::before {
@@ -196,10 +213,17 @@
     background: rgba(22, 93, 255, 0.55);
   }
   .halftone {
-    background-image: radial-gradient(rgba(17, 17, 17, 0.16) 1.4px, transparent 1.6px);
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 18%, transparent) 1.4px, transparent 1.6px);
     background-size: 12px 12px;
   }
   .marker-underline {
     background-image: linear-gradient(transparent 70%, rgba(255, 20, 144, 0.9) 70%, rgba(255, 20, 144, 0.9) 82%, transparent 82%);
   }
+}
+
+/* In dark mode the "More from Roger" block is inverted to paper; use the deeper cobalt there for contrast */
+.dark #more {
+  --cobalt: #165dff;
+  --primary: #165dff;
+  --pink: #ff1490;
 }

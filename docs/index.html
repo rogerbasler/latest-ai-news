@@ -9,13 +9,23 @@
     <title>AI News Weekly | thinkRoger</title>
     <meta name="description" content="AI News Weekly by Roger Basler de Roca: 15 stories and a podcast every Sunday, part of thinkRoger." />
     <meta name="theme-color" content="#f2ede3" />
+    <script>
+      // Set the colour mode before the first paint to avoid a flash.
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t !== "light" && t !== "dark") t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        if (t === "dark") document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = t;
+      })();
+    </script>
     <!-- Add Google Fonts here, example:
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     -->
-    <script type="module" crossorigin src="/latest-ai-news/assets/index-Dp-2umRi.js"></script>
-    <link rel="stylesheet" crossorigin href="/latest-ai-news/assets/index-4O1kBobt.css">
+    <script type="module" crossorigin src="/latest-ai-news/assets/index-BnHgoVgY.js"></script>
+    <link rel="stylesheet" crossorigin href="/latest-ai-news/assets/index-DXr6tCRj.css">
   </head>
 
   <body>

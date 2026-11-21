@@ -1,4 +1,6 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Moon, Sun } from "lucide-react";
+import MoreFromRoger, { HELLO_SUNDAY, SUBSTACK } from "@/components/MoreFromRoger";
+import { useTheme } from "@/contexts/ThemeContext";
 import NewsCard from "@/components/NewsCard";
 import PodcastPlayer from "@/components/PodcastPlayer";
 import Emphasis from "@/components/Emphasis";
@@ -8,7 +10,6 @@ import { formatDay } from "@/lib/date";
 import type { NewsCategory } from "@/types/news";
 
 const BASE = import.meta.env.BASE_URL;
-const SUBSTACK = "https://thinkroger.substack.com";
 
 function requestedWeek(): string | null {
   if (typeof window === "undefined") return null;
@@ -24,6 +25,7 @@ const categories: NewsCategory[] = [
 ];
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   const week = requestedWeek();
   const archived = archive.find((edition) => edition.weekEnding === week);
   const edition = archived ?? sampleData;
@@ -44,14 +46,27 @@ export default function Home() {
             <span className="font-display whitespace-nowrap text-xl sm:text-3xl">AI News Weekly</span>
             <span className="hidden text-sm font-extrabold sm:inline">#thinkRoger</span>
           </a>
-          <a
-            href={SUBSTACK}
-            target="_blank"
-            rel="noopener"
-            className="truncate text-[0.65rem] font-bold uppercase tracking-[0.06em] hover:text-primary sm:text-sm"
-          >
-            thinkroger.substack.com
-          </a>
+          <nav className="flex items-center gap-4 text-[0.7rem] font-bold uppercase tracking-[0.06em] sm:gap-6 sm:text-xs">
+            <a href={SUBSTACK} target="_blank" rel="noopener" className="hidden hover:text-primary sm:inline">
+              ThinkRoger
+            </a>
+            <a href={HELLO_SUNDAY} target="_blank" rel="noopener" className="hidden hover:text-primary sm:inline">
+              Hello Sunday
+            </a>
+            <a href="#more" className="hover:text-primary sm:hidden">
+              More
+            </a>
+            {toggleTheme && (
+              <button
+                onClick={toggleTheme}
+                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                title={theme === "dark" ? "Light mode" : "Dark mode"}
+                className="flex h-9 w-9 items-center justify-center border border-foreground transition-colors hover:bg-foreground hover:text-background"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
+            )}
+          </nav>
         </div>
       </header>
 
@@ -132,33 +147,7 @@ export default function Home() {
         })}
       </main>
 
-      {/* ThinkRoger */}
-      <section className="bg-foreground text-background">
-        <div className="container grid gap-10 py-16 md:grid-cols-[1.4fr_1fr] md:items-center">
-          <div>
-            <span className="kicker">ThinkRoger</span>
-            <h2 className="font-display mt-5 text-4xl sm:text-6xl">
-              From the news <span className="text-primary">to the decision.</span>
-            </h2>
-            <p className="mt-5 max-w-xl leading-relaxed text-background/80">
-              Every Thursday, Roger Basler de Roca takes one question further: does AI make a decision better, or only
-              faster? A research-based essay, read in his own voice.
-            </p>
-          </div>
-          <div className="md:justify-self-end">
-            <a
-              href={SUBSTACK}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 bg-primary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.06em] text-primary-foreground transition-colors hover:bg-background hover:text-foreground"
-            >
-              Read ThinkRoger on Substack
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <p className="font-marker mt-4 -rotate-2 text-lg text-accent">every Thursday</p>
-          </div>
-        </div>
-      </section>
+      <MoreFromRoger />
 
       {/* Previous editions */}
       {otherEditions.length > 0 && (
@@ -203,7 +192,12 @@ export default function Home() {
             <p className="font-extrabold">#thinkRoger</p>
             <p>
               <a href={SUBSTACK} target="_blank" rel="noopener" className="underline decoration-primary underline-offset-4">
-                thinkroger.substack.com
+                ThinkRoger on Substack
+              </a>
+            </p>
+            <p>
+              <a href={HELLO_SUNDAY} target="_blank" rel="noopener" className="underline decoration-primary underline-offset-4">
+                Hello Sunday on Spotify
               </a>
             </p>
             <p className="text-muted-foreground">© {new Date().getFullYear()} Roger Basler de Roca</p>
