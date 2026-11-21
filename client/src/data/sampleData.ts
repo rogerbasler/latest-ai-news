@@ -2,6 +2,7 @@ import { WeeklyUpdate } from "../types/news";
 
 export const sampleData: WeeklyUpdate = {
   weekEnding: "2026-11-22",
+  headline: "Intelligence gets [cheaper.] Control does not.",
   podcast: {
     id: "ep-040",
     title: "AI News Weekly - November 22, 2026",

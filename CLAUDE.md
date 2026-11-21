@@ -29,6 +29,7 @@ Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `clie
 4. **Archivieren, dann `sampleData.ts` schreiben**
    - Zuerst die bisherige Ausgabe aus `sampleData.ts` als neuen ersten Eintrag in `archive.ts` übernehmen (`weekEnding` und `articles`, ohne `podcast`). Archivierte Ausgaben nie verändern.
    - `weekEnding` = `$DATUM`.
+   - `headline`: die Kernaussage der Woche in 4 bis 9 Wörtern, ein bis zwei Wörter in [Klammern] werden blau gesetzt (z. B. `Intelligence gets [cheaper.] Control does not.`). Gleiche Aussage wie der Titel der Instagram Story 01. Steht gross oben auf der Seite.
    - Pro Meldung: `id` (kurzer Slug mit Rubrik-Präfix `news-`, `tools-`, `ethics-`, `voices-`, `business-`), `title` (Originaltitel), `summary` (2 Sätze: was passiert ist, dann Einordnung oder Einschränkung), `source` (exakter Quellenname wie oben), `url` (kanonische Artikel-URL ohne Tracking-Parameter), `publishedAt` (YYYY-MM-DD), `category`.
    - `podcast`: `id` um eins erhöhen (`ep-035`, `ep-036`, ...), `title` = `AI News Weekly - <Month D, YYYY>`, `description` ein Satz mit den Themen der Woche plus "Presented by Roger Basler de Roca.", `audioUrl` bleibt `/latest-ai-news/podcast/latest-episode.mp3`, `publishedAt` = `$DATUM`, `duration` als Schätzung `MM:SS`, `audioPending: true` (die Seite zeigt dann statt des alten MP3 einen Hinweis; die Action setzt die echte Dauer und entfernt `audioPending`).
 
@@ -56,6 +57,10 @@ Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `clie
 
 9. **Abschluss**: kurze Meldung mit Datum, den 15 Titeln nach Rubrik, Wortzahl des Skripts und dem Link zur Seite.
 
+## Design
+
+Die Seite folgt dem thinkRoger-Look: Papier-Hintergrund (#f2ede3), Schwarz, Kobaltblau (#165dff) für die Betonung, Pink (#ff1490) nur als kleine Randnotiz, Überschriften in Anton (Grossbuchstaben), Text in Montserrat, Randnotizen in Permanent Marker. Farben und Klassen in `client/src/index.css`, Layout in `client/src/pages/Home.tsx`. Der Wochenlauf ändert das Design nicht.
+
 ## Schreibregeln (verbindlich)
 
 - Sprache der Website und des Podcasts: Englisch (international, britische oder amerikanische Schreibweise einheitlich pro Ausgabe).
@@ -82,6 +87,7 @@ automation/tts_elevenlabs.py    Audio mit ElevenLabs, Rogers Stimme (läuft nur 
 automation/voice.json           Stimme, Modell, Einstellungen und KI-Deklaration
 .github/workflows/podcast.yml   Audio-Action
 docs/                           gebaute Website (GitHub Pages)
+client/public/fonts/            Schriften selbst gehostet (Anton, Montserrat, Permanent Marker), kein Google-Fonts-Abruf
 ```
 
 ## Instagram Stories (thinkRoger), Teil jedes Wochenlaufs

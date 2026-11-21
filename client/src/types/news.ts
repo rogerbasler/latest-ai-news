@@ -28,6 +28,8 @@ export interface PodcastEpisode {
 
 export interface WeeklyUpdate {
   weekEnding: string;
+  // Core message of the week, words in [brackets] are set in cobalt blue
+  headline?: string;
   articles: NewsArticle[];
   podcast: PodcastEpisode;
 }

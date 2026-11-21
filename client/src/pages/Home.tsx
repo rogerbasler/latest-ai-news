@@ -1,28 +1,29 @@
-import { Sparkles, Newspaper, Calendar, Archive, ArrowLeft } from "lucide-react";
-import { APP_TITLE } from "@/const";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import NewsCard from "@/components/NewsCard";
 import PodcastPlayer from "@/components/PodcastPlayer";
+import Emphasis from "@/components/Emphasis";
 import { sampleData } from "@/data/sampleData";
 import { archive } from "@/data/archive";
 import { formatDay } from "@/lib/date";
 import type { NewsCategory } from "@/types/news";
 
 const BASE = import.meta.env.BASE_URL;
+const SUBSTACK = "https://thinkroger.substack.com";
 
 function requestedWeek(): string | null {
   if (typeof window === "undefined") return null;
   return new URLSearchParams(window.location.search).get("week");
 }
 
-export default function Home() {
-  const categories: NewsCategory[] = [
-    "AI News of the Week",
-    "AI Tools, Startups, and Innovations",
-    "Regulation and Ethics",
-    "Voices and Perspectives",
-    "Implications for Business & Society",
-  ];
+const categories: NewsCategory[] = [
+  "AI News of the Week",
+  "AI Tools, Startups, and Innovations",
+  "Regulation and Ethics",
+  "Voices and Perspectives",
+  "Implications for Business & Society",
+];
 
+export default function Home() {
   const week = requestedWeek();
   const archived = archive.find((edition) => edition.weekEnding === week);
   const edition = archived ?? sampleData;
@@ -32,193 +33,180 @@ export default function Home() {
       .filter((e) => e.weekEnding !== edition.weekEnding)
       .map((e) => ({ weekEnding: e.weekEnding, articles: e.articles, latest: false })),
   ];
-
-  const getArticlesByCategory = (category: NewsCategory) => {
-    return edition.articles.filter((article) => article.category === category);
-  };
+  const headline = edition.headline ?? "The week in AI, [sorted] for decision makers.";
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/50 bg-card/30 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold">{APP_TITLE}</h1>
-                <p className="text-xs text-muted-foreground">Weekly AI News & Insights</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="w-4 h-4" />
-              <span>Week ending {formatDay(edition.weekEnding)}</span>
-            </div>
-          </div>
+    <div className="min-h-screen overflow-x-hidden">
+      {/* Masthead */}
+      <header className="sticky top-0 z-50 border-b-[3px] border-foreground bg-background/95 backdrop-blur-sm">
+        <div className="container flex items-center justify-between gap-4 py-3">
+          <a href={BASE} className="flex items-baseline gap-3">
+            <span className="font-display whitespace-nowrap text-xl sm:text-3xl">AI News Weekly</span>
+            <span className="hidden text-sm font-extrabold sm:inline">#thinkRoger</span>
+          </a>
+          <a
+            href={SUBSTACK}
+            target="_blank"
+            rel="noopener"
+            className="truncate text-[0.65rem] font-bold uppercase tracking-[0.06em] hover:text-primary sm:text-sm"
+          >
+            thinkroger.substack.com
+          </a>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-primary/5 to-transparent">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              Your Weekly AI News Digest
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Curated insights from leading international sources, delivered every Sunday by Roger Basler de Roca
-            </p>
-            <div className="flex items-center justify-center gap-6 pt-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Newspaper className="w-4 h-4 text-primary" />
-                <span>{edition.articles.length} Articles</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-primary" />
-                <span>5 Categories</span>
-              </div>
-            </div>
+      {/* Hero */}
+      <section className="relative">
+        <div className="halftone pointer-events-none absolute -right-10 top-6 hidden h-72 w-72 rounded-full opacity-70 md:block" />
+        <div className="container relative py-14 sm:py-20">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="kicker">{archived ? "Archived edition" : "This week in AI"}</span>
+            <span className="text-xs font-bold uppercase tracking-[0.08em]">
+              Week ending {formatDay(edition.weekEnding)}
+            </span>
           </div>
+          <h1 className="font-display mt-6 max-w-5xl text-[2.9rem] sm:text-7xl lg:text-8xl">
+            <Emphasis text={headline} />
+          </h1>
+          <div className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+            <p className="max-w-2xl text-base leading-relaxed sm:text-lg">
+              {edition.articles.length} stories from TechCrunch, VentureBeat, The Register, MIT Technology Review and
+              the AI labs themselves, selected and put in context for entrepreneurs and decision makers. Every Sunday,
+              with a podcast, by Roger Basler de Roca.
+            </p>
+            <p className="font-marker -rotate-2 text-xl text-accent">
+              news first, then judgment
+            </p>
+          </div>
+          {/* Section index */}
+          <nav className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-foreground pt-4 text-xs font-bold uppercase tracking-[0.06em]">
+            {categories.map((c, i) => (
+              <a key={c} href={`#section-${i + 1}`} className="hover:text-primary">
+                <span className="text-primary">{String(i + 1).padStart(2, "0")}</span> {c}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 
-      {archived ? (
-        <section className="py-8 bg-card/20">
-          <div className="container">
-            <div className="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border border-border/50 bg-card/50 p-4 text-sm">
-              <span className="flex items-center gap-2 text-muted-foreground">
-                <Archive className="w-4 h-4 text-primary" />
-                Archived edition, week ending {formatDay(archived.weekEnding)}. The podcast is available for the latest edition.
+      {/* Podcast or archive notice */}
+      <section className="pb-6">
+        <div className="container">
+          {archived ? (
+            <div className="scrap flex flex-col justify-between gap-3 border border-foreground/80 p-5 text-sm sm:flex-row sm:items-center">
+              <span>
+                You are reading the edition for the week ending {formatDay(archived.weekEnding)}. The podcast is
+                available for the latest edition.
               </span>
-              <a href={BASE} className="inline-flex items-center gap-2 text-primary hover:underline">
-                <ArrowLeft className="w-4 h-4" />
+              <a href={BASE} className="inline-flex items-center gap-2 font-bold text-primary">
+                <ArrowLeft className="h-4 w-4" />
                 Latest edition
               </a>
             </div>
-          </div>
-        </section>
-      ) : (
-        // Podcast Section
-        <section className="py-12 bg-card/20">
-          <div className="container">
-            <div className="max-w-4xl mx-auto">
-              <PodcastPlayer episode={sampleData.podcast} />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* News Categories */}
-      <section className="py-16">
-        <div className="container">
-          <div className="space-y-16">
-            {categories.map((category) => {
-              const articles = getArticlesByCategory(category);
-              if (articles.length === 0) return null;
-
-              return (
-                <div key={category} className="space-y-6">
-                  <h3 className="text-2xl font-bold text-foreground border-l-4 border-primary pl-4">
-                    {category}
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {articles.map((article) => (
-                      <NewsCard key={article.id} article={article} />
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          ) : (
+            <PodcastPlayer episode={sampleData.podcast} />
+          )}
         </div>
       </section>
 
-      {/* Previous Editions */}
-      {otherEditions.length > 0 && (
-        <section className="py-12 border-t border-border/50">
-          <div className="container">
-            <div className="max-w-4xl mx-auto space-y-4">
-              <h3 className="text-2xl font-bold flex items-center gap-3">
-                <Archive className="w-6 h-6 text-primary" />
-                {archived ? "Other editions" : "Previous editions"}
-              </h3>
-              <ul className="divide-y divide-border/50 rounded-lg border border-border/50 bg-card/30">
-                {otherEditions.map((e) => (
-                  <li key={e.weekEnding}>
-                    <a
-                      href={e.latest ? BASE : `${BASE}?week=${e.weekEnding}`}
-                      className="flex items-center justify-between gap-4 px-4 py-3 hover:bg-card/60 transition-colors"
-                    >
-                      <span className="font-medium">
-                        Week ending {formatDay(e.weekEnding)}
-                        {e.latest ? " (latest)" : ""}
-                      </span>
-                      <span className="text-sm text-muted-foreground">{e.articles.length} articles</span>
-                    </a>
-                  </li>
+      {/* Categories */}
+      <main className="container space-y-20 py-16">
+        {categories.map((category, ci) => {
+          const articles = edition.articles.filter((a) => a.category === category);
+          if (articles.length === 0) return null;
+          return (
+            <section key={category} id={`section-${ci + 1}`} className="scroll-mt-24">
+              <div className="flex items-end gap-4 border-b-[3px] border-foreground pb-3">
+                <span className="font-display text-5xl text-primary sm:text-6xl">
+                  {String(ci + 1).padStart(2, "0")}
+                </span>
+                <h2 className="font-display pb-1 text-2xl sm:text-4xl">{category}</h2>
+              </div>
+              <div className="mt-8 grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
+                {articles.map((article, i) => (
+                  <NewsCard key={article.id} article={article} index={i} />
                 ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      )}
+              </div>
+            </section>
+          );
+        })}
+      </main>
 
-      {/* About Section */}
-      <section className="py-16 bg-gradient-to-t from-primary/5 to-transparent">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h3 className="text-2xl font-bold">About This Podcast</h3>
-            <p className="text-muted-foreground">
-              Hosted by <span className="text-foreground font-semibold">Roger Basler de Roca</span>, 
-              this weekly podcast brings you the most important AI developments from around the world. 
-              We analyze news from leading sources including TechCrunch, VentureBeat, MIT Technology Review, 
-              The Register and the AI labs' own announcements to keep you informed about the rapidly evolving AI landscape.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              New episodes published every Sunday at 6:00 AM
+      {/* ThinkRoger */}
+      <section className="bg-foreground text-background">
+        <div className="container grid gap-10 py-16 md:grid-cols-[1.4fr_1fr] md:items-center">
+          <div>
+            <span className="kicker">ThinkRoger</span>
+            <h2 className="font-display mt-5 text-4xl sm:text-6xl">
+              From the news <span className="text-primary">to the decision.</span>
+            </h2>
+            <p className="mt-5 max-w-xl leading-relaxed text-background/80">
+              Every Thursday, Roger Basler de Roca takes one question further: does AI make a decision better, or only
+              faster? A research-based essay, read in his own voice.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ThinkRoger essay */}
-      <section className="py-12 border-t border-border/50">
-        <div className="container">
-          <div className="max-w-3xl mx-auto rounded-lg border border-primary/30 bg-card/40 p-6 sm:p-8 text-center space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">ThinkRoger</p>
-            <h3 className="text-2xl font-bold">From the news to the decision</h3>
-            <p className="text-muted-foreground">
-              Every Thursday, Roger Basler de Roca takes one question further: does AI make a decision
-              better, or only faster? A research-based essay, read in his own voice.
-            </p>
+          <div className="md:justify-self-end">
             <a
-              href="https://thinkroger.substack.com"
+              href={SUBSTACK}
               target="_blank"
               rel="noopener"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 bg-primary px-6 py-4 text-sm font-extrabold uppercase tracking-[0.06em] text-primary-foreground transition-colors hover:bg-background hover:text-foreground"
             >
               Read ThinkRoger on Substack
+              <ArrowUpRight className="h-4 w-4" />
             </a>
+            <p className="font-marker mt-4 -rotate-2 text-lg text-accent">every Thursday</p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-border/50 bg-card/30">
-        <div className="container">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} {APP_TITLE}. All rights reserved.</p>
-            <p className="mt-2">
-              Curated with care by Roger Basler de Roca
+      {/* Previous editions */}
+      {otherEditions.length > 0 && (
+        <section className="container py-16">
+          <div className="flex items-end justify-between border-b-[3px] border-foreground pb-3">
+            <h2 className="font-display text-3xl sm:text-4xl">{archived ? "Other editions" : "Previous editions"}</h2>
+          </div>
+          <ul className="mt-2 grid gap-x-10 sm:grid-cols-2">
+            {otherEditions.map((e) => (
+              <li key={e.weekEnding} className="border-b border-foreground/25">
+                <a
+                  href={e.latest ? BASE : `${BASE}?week=${e.weekEnding}`}
+                  className="group flex items-center justify-between gap-4 py-3"
+                >
+                  <span className="font-bold group-hover:text-primary">
+                    Week ending {formatDay(e.weekEnding)}
+                    {e.latest ? " (latest)" : ""}
+                  </span>
+                  <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+                    {e.articles.length} stories
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* About + footer */}
+      <footer className="border-t-[3px] border-foreground">
+        <div className="container grid gap-8 py-12 text-sm md:grid-cols-[1.5fr_1fr]">
+          <div>
+            <p className="font-display text-2xl">About AI News Weekly</p>
+            <p className="mt-3 max-w-xl leading-relaxed text-foreground/80">
+              Hosted by Roger Basler de Roca. Every Sunday at 6:00, fifteen stories from TechCrunch, VentureBeat, MIT
+              Technology Review, The Register and the AI labs' own announcements, each checked on the original page and
+              placed in context. Research is supported by AI; the podcast is read in Roger's cloned voice.
             </p>
-            <p className="mt-2">
-              Weekly essays:{" "}
-              <a href="https://thinkroger.substack.com" target="_blank" rel="noopener" className="underline hover:text-foreground">
+          </div>
+          <div className="space-y-2 md:text-right">
+            <p className="font-extrabold">#thinkRoger</p>
+            <p>
+              <a href={SUBSTACK} target="_blank" rel="noopener" className="underline decoration-primary underline-offset-4">
                 thinkroger.substack.com
               </a>
             </p>
+            <p className="text-muted-foreground">© {new Date().getFullYear()} Roger Basler de Roca</p>
           </div>
         </div>
       </footer>

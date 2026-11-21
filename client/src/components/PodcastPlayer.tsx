@@ -1,5 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, Pause, Volume2 } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import type { PodcastEpisode } from "@/types/news";
 import { formatDay } from "@/lib/date";
@@ -67,63 +66,55 @@ export default function PodcastPlayer({ episode }: PodcastPlayerProps) {
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
+  const progress = duration ? (currentTime / duration) * 100 : 0;
+
   return (
-    <Card className="bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20">
-      <CardHeader>
-        <div className="flex items-center gap-3 mb-2">
-          <Volume2 className="w-6 h-6 text-primary" />
-          <CardTitle className="text-xl">Weekly AI News Podcast</CardTitle>
-        </div>
-        <CardDescription className="text-base">{episode.title}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm text-muted-foreground mb-4">{episode.description}</p>
-        
-        {episode.audioPending ? (
-          <p className="text-sm text-primary mb-4">
-            The audio for this episode is being produced and will appear here shortly.
-          </p>
-        ) : (
-          <>
+    <div className="scrap tape border border-foreground/80 p-6 sm:p-8">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <span className="kicker">The podcast</span>
+        <span className="text-xs font-bold uppercase tracking-[0.08em] text-muted-foreground">
+          {formatDay(episode.publishedAt)} · {episode.duration}
+        </span>
+      </div>
+      <h3 className="font-display mt-5 text-3xl sm:text-4xl">{episode.title}</h3>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/80 sm:text-base">{episode.description}</p>
+
+      {episode.audioPending ? (
+        <p className="font-marker mt-6 text-lg text-accent">
+          The audio for this episode is being produced and will appear here shortly.
+        </p>
+      ) : (
+        <>
           <audio ref={audioRef} src={episode.audioUrl} preload="metadata" />
-          
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={togglePlay}
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-primary hover:bg-primary/90 transition-colors"
-                aria-label={isPlaying ? "Pause" : "Play"}
-              >
-                {isPlaying ? (
-                  <Pause className="w-6 h-6 text-primary-foreground" />
-                ) : (
-                  <Play className="w-6 h-6 text-primary-foreground ml-0.5" />
-                )}
-              </button>
-              
-              <div className="flex-1">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{episode.duration}</span>
-                </div>
+          <div className="mt-6 flex items-center gap-4">
+            <button
+              onClick={togglePlay}
+              className="flex h-14 w-14 shrink-0 items-center justify-center bg-primary text-primary-foreground transition-colors hover:bg-foreground"
+              aria-label={isPlaying ? "Pause" : "Play"}
+            >
+              {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="ml-0.5 h-6 w-6" />}
+            </button>
+            <div className="flex-1">
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                value={currentTime}
+                onChange={handleSeek}
+                aria-label="Seek"
+                style={{
+                  background: `linear-gradient(to right, var(--cobalt) ${progress}%, #d8d1c3 ${progress}%)`,
+                }}
+                className="h-1.5 w-full cursor-pointer appearance-none [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-foreground [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-foreground"
+              />
+              <div className="mt-2 flex justify-between text-xs font-semibold text-muted-foreground">
+                <span>{formatTime(currentTime)}</span>
+                <span>{episode.duration}</span>
               </div>
             </div>
           </div>
-          </>
-        )}
-
-        <div className="text-xs text-muted-foreground mt-4">
-          Published: {formatDay(episode.publishedAt)}
-        </div>
-      </CardContent>
-    </Card>
+        </>
+      )}
+    </div>
   );
 }
