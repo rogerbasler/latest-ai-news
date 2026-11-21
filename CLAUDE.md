@@ -83,3 +83,11 @@ automation/voice.json           Stimme, Modell, Einstellungen und KI-Deklaration
 .github/workflows/podcast.yml   Audio-Action
 docs/                           gebaute Website (GitHub Pages)
 ```
+
+## Instagram Stories (thinkRoger), Teil jedes Wochenlaufs
+
+Nach dem Push der Ausgabe:
+1. `podcast/stories.json` neu schreiben (Format im Kopf von `automation/instagram_stories.py`): 7 Stories auf Englisch. 01 Titel (Kernaussage der Woche, ein Satz `sub`, kurze `note`), 02 bis 06 je die stärkste Meldung pro Rubrik (`kicker` = Rubrik, `headline` 5 bis 10 Wörter mit einer Betonung in [Klammern], `fact` 1 bis 2 Sätze nur mit Fakten aus dem geprüften Artikel, `note` 2 bis 5 Wörter Einordnung, `source`), 07 Abschluss mit Link zur Seite und zu thinkroger.substack.com. `date_label` z. B. `NOV 29, 2026`. Keine Gedankenstriche, gerade Anführungszeichen.
+2. Schriften laden (Anton, PermanentMarker, Montserrat variabel als `Montserrat-VF.ttf`) von raw.githubusercontent.com/google/fonts, dann `python3 -I automation/instagram_stories.py podcast/stories.json <fonts> <out>`. Jede Story ansehen (Read) und auf Überlappungen prüfen.
+3. Google Drive: Ordner "thinkRoger Instagram Stories" (ID 18z2VIEgzbZTxa70fwKC8EAuZhShtU9Qk), darin Unterordner `YYYY-MM-DD`, Dateien `YYYY-MM-DD_thinkroger_story_NN.jpg`. Vorher prüfen, dass es den Ordner noch nicht gibt.
+4. Gmail: eine E-Mail an Roger (roger@analytics-agentur.ch, niemand sonst) mit den 7 JPGs als Anhang, Betreff `thinkRoger Instagram Stories - AI News Weekly DD.MM.YYYY`, Liste der Stories, Sticker-Vorschlag und Drive-Link. Nie doppelt senden. Die Stories werden nicht selbst auf Instagram gepostet.

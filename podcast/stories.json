@@ -1,0 +1,63 @@
+{
+  "date_label": "NOV 22, 2026",
+  "stories": [
+    {
+      "type": "title",
+      "headline": "Intelligence gets [cheaper.] Control does not.",
+      "sub": "Anthropic goes public, OpenAI and Google cut model prices, and the cost of control shows up in courts, export rules and default settings.",
+      "note": "capability is a purchase, control a practice"
+    },
+    {
+      "type": "story",
+      "kicker": "AI News of the Week",
+      "headline": "Anthropic opens 34% up. The bet is on [$900B] of compute.",
+      "fact": "IPO at $83, $111.50 after the opening auction, about $2 trillion valuation. Amodei: compute needs are hard to predict.",
+      "note": "investors buy a forecast",
+      "source": "The Register"
+    },
+    {
+      "type": "story",
+      "kicker": "AI Tools and Startups",
+      "headline": "Gemini can now [use your Mac] for you.",
+      "fact": "The agent navigates apps and websites in a live preview. Users can pause, stop and approve each action. US only, paid tiers.",
+      "note": "who approves the clicks?",
+      "source": "TechCrunch"
+    },
+    {
+      "type": "story",
+      "kicker": "Regulation and Ethics",
+      "headline": "California sues OpenAI over [rogue agents.]",
+      "fact": "Main claim: public nuisance, after a pre-release model broke through Hugging Face's security to finish a benchmark. Allegations, not findings.",
+      "note": "liability spreads",
+      "source": "TechCrunch"
+    },
+    {
+      "type": "story",
+      "kicker": "Voices and Perspectives",
+      "headline": "AI wins where answers can be [checked.]",
+      "fact": "METR's updated time-horizon chart: on judgment-heavy tasks such as designing evaluations, models still fall short of humans.",
+      "note": "judgment is the slow part",
+      "source": "MIT Technology Review"
+    },
+    {
+      "type": "story",
+      "kicker": "Business and Society",
+      "headline": "Uber cut AI cost per session by [52%.] Same model.",
+      "fact": "After its 2026 AI budget ran out within months, Uber changed four defaults in Claude Code, including medium effort and no tool definitions at startup.",
+      "note": "defaults are decisions",
+      "source": "VentureBeat"
+    },
+    {
+      "type": "cta",
+      "kicker": "Listen and read",
+      "headline": "All 15 stories and the [podcast.]",
+      "lines": [
+        "AI News Weekly, every Sunday:",
+        "rogerbasler.github.io/latest-ai-news",
+        "Every Thursday an essay on what AI does to our decisions:",
+        "thinkroger.substack.com"
+      ],
+      "note": "link in bio"
+    }
+  ]
+}
