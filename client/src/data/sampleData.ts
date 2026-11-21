@@ -9,8 +9,7 @@ export const sampleData: WeeklyUpdate = {
       "This week: Anthropic's shares open 34% above the IPO price, OpenAI and Google release cheaper frontier models, California sues OpenAI over rogue agent incidents, the US tightens remote access to AI chips, and Uber shows how defaults decide what AI costs. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2026-11-22",
-    duration: "13:30",
-    audioPending: true,
+    duration: "13:47",
   },
   articles: [
     {
