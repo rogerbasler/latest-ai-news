@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, Moon, Sun } from "lucide-react";
 import MoreFromRoger, { HELLO_SUNDAY, SUBSTACK } from "@/components/MoreFromRoger";
 import { useTheme } from "@/contexts/ThemeContext";
 import Legal from "@/pages/Legal";
+import PrivacyNote from "@/components/PrivacyNote";
 import NewsCard from "@/components/NewsCard";
 import PodcastPlayer from "@/components/PodcastPlayer";
 import Emphasis from "@/components/Emphasis";
@@ -223,6 +224,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <PrivacyNote />
     </div>
   );
 }

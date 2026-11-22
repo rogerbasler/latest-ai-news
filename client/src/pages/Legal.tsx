@@ -88,9 +88,9 @@ export default function Legal() {
             this website itself, not from third-party servers.
           </p>
           <p>
-            If you switch between light and dark mode, your choice is stored in your browser's local storage on your
-            own device so the site remembers it. It is not sent to us. You can delete it at any time in your browser
-            settings.
+            Two small settings are stored in your browser's local storage on your own device: your choice between
+            light and dark mode, and the fact that you have closed the short privacy note. They are not sent to us and
+            you can delete them at any time in your browser settings.
           </p>
         </Block>
 
