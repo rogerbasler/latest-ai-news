@@ -59,7 +59,7 @@ Inhalt der Website: `client/src/data/sampleData.ts` (aktuelle Ausgabe) und `clie
 
 ## Design
 
-Die Seite folgt dem thinkRoger-Look: Papier-Hintergrund (#f2ede3), Schwarz, Kobaltblau (#165dff) für die Betonung, Pink (#ff1490) nur als kleine Randnotiz, Überschriften in Anton (Grossbuchstaben), Text in Montserrat, Randnotizen in Permanent Marker. Farben und Klassen in `client/src/index.css`, Layout in `client/src/pages/Home.tsx`. Hell- und Dunkelmodus: folgt der Systemeinstellung, umschaltbar oben rechts (Farben für `.dark` in `index.css`). Der Block "More from Roger" (`client/src/components/MoreFromRoger.tsx`) verlinkt ThinkRoger (Substack) und Hello Sunday (Spotify, Show 2qpmGFO3MzBZ7ZTDlgo6Wu); die eingebetteten Player laden erst nach Klick. Der Wochenlauf ändert das Design nicht.
+Die Seite folgt dem thinkRoger-Look: Papier-Hintergrund (#f2ede3), Schwarz, Kobaltblau (#165dff) für die Betonung, Pink (#ff1490) nur als kleine Randnotiz, Überschriften in Anton (Grossbuchstaben), Text in Montserrat, Randnotizen in Permanent Marker. Farben und Klassen in `client/src/index.css`, Layout in `client/src/pages/Home.tsx`. Hell- und Dunkelmodus: folgt der Systemeinstellung, umschaltbar oben rechts (Farben für `.dark` in `index.css`). Der Block "More from Roger" (`client/src/components/MoreFromRoger.tsx`) verlinkt ThinkRoger (Substack) und Hello Sunday (Spotify, Show 2qpmGFO3MzBZ7ZTDlgo6Wu); die eingebetteten Player laden erst nach Klick. Impressum und Datenschutzerklärung stehen in `client/src/pages/Legal.tsx` (aufrufbar über `?page=legal#imprint` bzw. `#privacy`, Links im Footer); bei neuen Drittanbietern, Cookies oder Tracking dort nachführen. Der Wochenlauf ändert das Design nicht.
 
 ## Schreibregeln (verbindlich)
 

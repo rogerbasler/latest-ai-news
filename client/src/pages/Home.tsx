@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, Moon, Sun } from "lucide-react";
 import MoreFromRoger, { HELLO_SUNDAY, SUBSTACK } from "@/components/MoreFromRoger";
 import { useTheme } from "@/contexts/ThemeContext";
+import Legal from "@/pages/Legal";
 import NewsCard from "@/components/NewsCard";
 import PodcastPlayer from "@/components/PodcastPlayer";
 import Emphasis from "@/components/Emphasis";
@@ -10,6 +11,11 @@ import { formatDay } from "@/lib/date";
 import type { NewsCategory } from "@/types/news";
 
 const BASE = import.meta.env.BASE_URL;
+
+function requestedPage(): string | null {
+  if (typeof window === "undefined") return null;
+  return new URLSearchParams(window.location.search).get("page");
+}
 
 function requestedWeek(): string | null {
   if (typeof window === "undefined") return null;
@@ -26,6 +32,7 @@ const categories: NewsCategory[] = [
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
+  const isLegal = requestedPage() === "legal";
   const week = requestedWeek();
   const archived = archive.find((edition) => edition.weekEnding === week);
   const edition = archived ?? sampleData;
@@ -70,6 +77,10 @@ export default function Home() {
         </div>
       </header>
 
+      {isLegal ? (
+        <Legal />
+      ) : (
+        <>
       {/* Hero */}
       <section className="relative">
         <div className="halftone pointer-events-none absolute -right-10 top-6 hidden h-72 w-72 rounded-full opacity-70 md:block" />
@@ -177,6 +188,9 @@ export default function Home() {
         </section>
       )}
 
+        </>
+      )}
+
       {/* About + footer */}
       <footer className="border-t-[3px] border-foreground">
         <div className="container grid gap-8 py-12 text-sm md:grid-cols-[1.5fr_1fr]">
@@ -199,6 +213,11 @@ export default function Home() {
               <a href={HELLO_SUNDAY} target="_blank" rel="noopener" className="underline decoration-primary underline-offset-4">
                 Hello Sunday on Spotify
               </a>
+            </p>
+            <p>
+              <a href={`${BASE}?page=legal#imprint`} className="hover:text-primary">Imprint</a>
+              {" · "}
+              <a href={`${BASE}?page=legal#privacy`} className="hover:text-primary">Privacy</a>
             </p>
             <p className="text-muted-foreground">© {new Date().getFullYear()} Roger Basler de Roca</p>
           </div>
