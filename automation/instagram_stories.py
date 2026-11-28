@@ -141,11 +141,11 @@ def scribble(draw, x, y, w, seed):
     draw.line(pts, fill=PINK, width=7, joint="curve")
 
 
-def header(draw, fd, date_label, idx, total):
+def header(draw, fd, date_label, idx, total, series="AI NEWS WEEKLY"):
     lab = font(fd, "Montserrat-VF.ttf", 34, 800)
     small = font(fd, "Montserrat-VF.ttf", 28, 600)
     draw.text((M, 250), "#thinkRoger", font=lab, fill=INK)
-    t = f"AI NEWS WEEKLY  |  {date_label}"
+    t = f"{series}  |  {date_label}"
     draw.text((W - M - draw.textlength(t, font=small), 256), t, font=small, fill=INK)
     draw.line([(M, 310), (W - M, 310)], fill=INK, width=4)
     seg = (W - 2 * M - (total - 1) * 10) / total
@@ -219,10 +219,10 @@ def render(spec, fd, out):
     for i, s in enumerate(stories):
         img = paper_texture(Image.new("RGB", (W, H), PAPER), i + 3)
         d = ImageDraw.Draw(img)
-        header(d, fd, spec["date_label"], i, total)
+        header(d, fd, spec["date_label"], i, total, spec.get("series", "AI NEWS WEEKLY"))
         t = s["type"]
         if t == "title":
-            y = kicker(d, fd, "This week in AI", 430)
+            y = kicker(d, fd, s.get("kicker", "This week in AI"), 430)
             room = BOTTOM - (y + 10) - 80 - (body_height(d, fd, s["sub"], 40) if s.get("sub") else 0) - note_height(d, fd, s.get("note"))
             f, lines, lh = fit_headline(d, s["headline"], fd, W - 2 * M, min(720, room), start=200)
             y = draw_headline(d, f, lines, lh, M, y + 10)
@@ -230,7 +230,7 @@ def render(spec, fd, out):
                 d, y = body_block(img, d, fd, s["sub"], y + 80, i, size=40)
             if s.get("note"):
                 note(d, fd, s["note"], M + 10, y + 50)
-            footer(d, fd, "Swipe for 5 stories")
+            footer(d, fd, s.get("footer", "Swipe for 5 stories"))
         elif t == "story":
             y = kicker(d, fd, s["kicker"], 430)
             room = BOTTOM - (y + 10) - 80 - body_height(d, fd, s["fact"]) - note_height(d, fd, s.get("note"))
