@@ -10,8 +10,7 @@ export const sampleData: WeeklyUpdate = {
       "This week: Nvidia reinstates Jensen Huang, Anthropic's shares slip below the IPO price, Anthropic lets agents approve code changes, 42 state attorneys general fight the sale of Character.AI chats, and a survey shows AI agents reviewing their own code. Presented by Roger Basler de Roca.",
     audioUrl: "/latest-ai-news/podcast/latest-episode.mp3",
     publishedAt: "2026-11-29",
-    duration: "12:30",
-    audioPending: true,
+    duration: "14:07",
   },
   articles: [
     {
