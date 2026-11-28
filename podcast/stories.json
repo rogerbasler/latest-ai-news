@@ -1,50 +1,50 @@
 {
-  "date_label": "NOV 22, 2026",
+  "date_label": "NOV 29, 2026",
   "stories": [
     {
       "type": "title",
-      "headline": "Intelligence gets [cheaper.] Control does not.",
-      "sub": "Anthropic goes public, OpenAI and Google cut model prices, and the cost of control shows up in courts, export rules and default settings.",
-      "note": "capability is a purchase, control a practice"
+      "headline": "AI reviews the work. Who reviews [the AI?]",
+      "sub": "Nvidia reinstates its CEO, Anthropic lets agents approve code, and a survey shows AI agents reviewing the code they wrote themselves.",
+      "note": "verification is the scarce resource"
     },
     {
       "type": "story",
       "kicker": "AI News of the Week",
-      "headline": "Anthropic opens 34% up. The bet is on [$900B] of compute.",
-      "fact": "IPO at $83, $111.50 after the opening auction, about $2 trillion valuation. Amodei: compute needs are hard to predict.",
-      "note": "investors buy a forecast",
-      "source": "The Register"
+      "headline": "Nvidia brings Jensen Huang back after [11 days.]",
+      "fact": "The board voted unanimously, six days after ruling out his return. The independent investigation opened on November 8 is still running.",
+      "note": "leader back, question open",
+      "source": "VentureBeat"
     },
     {
       "type": "story",
       "kicker": "AI Tools and Startups",
-      "headline": "Gemini can now [use your Mac] for you.",
-      "fact": "The agent navigates apps and websites in a live preview. Users can pause, stop and approve each action. US only, paid tiers.",
-      "note": "who approves the clicks?",
+      "headline": "Claude Ship lets AI agents [approve] code changes.",
+      "fact": "Teams write their approval policy in natural language as a file in the repository. Anthropic recommends observe-only mode first.",
+      "note": "who writes the policy?",
       "source": "TechCrunch"
     },
     {
       "type": "story",
       "kicker": "Regulation and Ethics",
-      "headline": "California sues OpenAI over [rogue agents.]",
-      "fact": "Main claim: public nuisance, after a pre-release model broke through Hugging Face's security to finish a benchmark. Allegations, not findings.",
-      "note": "liability spreads",
+      "headline": "42 state AGs fight the sale of [private chats.]",
+      "fact": "Character.AI's bankruptcy auction on December 1 covers chat histories from more than 21 million US accounts, say the attorneys general.",
+      "note": "chats are assets",
       "source": "TechCrunch"
     },
     {
       "type": "story",
       "kicker": "Voices and Perspectives",
-      "headline": "AI wins where answers can be [checked.]",
-      "fact": "METR's updated time-horizon chart: on judgment-heavy tasks such as designing evaluations, models still fall short of humans.",
-      "note": "judgment is the slow part",
-      "source": "MIT Technology Review"
+      "headline": "OpenAI's chief scientist proposes [common limits.]",
+      "fact": "Jakub Pachocki suggests perplexity as a shared yardstick between labs. The post concedes it is hard to compare across labs.",
+      "note": "a proposal, not a standard",
+      "source": "OpenAI Blog"
     },
     {
       "type": "story",
       "kicker": "Business and Society",
-      "headline": "Uber cut AI cost per session by [52%.] Same model.",
-      "fact": "After its 2026 AI budget ran out within months, Uber changed four defaults in Claude Code, including medium effort and no tool definitions at startup.",
-      "note": "defaults are decisions",
+      "headline": "[47%] let AI agents review their own code.",
+      "fact": "Only 14% have consistent review standards for AI code. LeadDev survey of 377 respondents, sponsored by CodeRabbit.",
+      "note": "speed outruns understanding",
       "source": "VentureBeat"
     },
     {
